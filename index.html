@@ -28,6 +28,11 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/6.png">
     <link rel="apple-touch-icon" href="images/6.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -76,13 +81,21 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--primary-color);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.05em;
         }
 
-        .logo span {
+        .logo .logo-text {
+            display: inline-block;
+        }
+
+        .logo .logo-text .highlight {
             color: var(--secondary-color);
         }
 
@@ -709,10 +722,27 @@
             margin-bottom: 40px;
         }
 
-        .footer-info h3 {
-            color: white;
-            font-size: 1.5rem;
+        .footer-logo {
+            display: flex;
+            align-items: center;
             margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            margin-right: 12px;
+        }
+
+        .footer-logo-text {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-logo-text .highlight {
+            color: var(--secondary-color);
         }
 
         .footer-info p {
@@ -804,7 +834,7 @@
     <!-- 헤더 -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo"><img src="images/6.png" alt="별길상조 로고" style="height: 50px; vertical-align: middle; margin-right: 10px;">별길상조</a>
+            <a href="#" class="logo"><img src="images/6.png" alt="별길상조 로고" style="height: 50px; margin-right: 12px;"><span class="logo-text"><span class="highlight">별</span>길상조</span></a>
             <nav>
                 <ul>
                     <li><a href="#estimate">장례견적</a></li>
@@ -1128,7 +1158,7 @@
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <div style="margin-bottom: 15px;"><img src="images/6.png" alt="별길상조 로고" style="height: 40px; vertical-align: middle; margin-right: 10px;"><span style="font-size: 1.5rem; font-weight: 700; color: white; vertical-align: middle;">별길상조</span></div>
+                    <div class="footer-logo"><img src="images/6.png" alt="별길상조 로고"><span class="footer-logo-text"><span class="highlight">별</span>길상조</span></div>
                     <p>상호: 별길상조 주식회사</p>
                     <p>대표: 홍길동</p>
                     <p>사업자등록번호: 000-00-00000</p>
