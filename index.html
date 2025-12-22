@@ -153,15 +153,11 @@
             text-align: center;
         }
 
-        .hero-image-placeholder {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
             border-radius: 20px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
         /* 견적 섹션 */
@@ -309,15 +305,22 @@
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
             border-radius: 50%;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 2rem;
+            overflow: hidden; /* Ensures the image stays within the circle */
+        }
+
+        .service-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This makes the image cover the area without distortion */
         }
 
         .service-card h3 {
@@ -506,6 +509,15 @@
         .promise-icon {
             font-size: 3rem;
             margin-bottom: 20px;
+            color: white; /* Fallback for emoji */
+        }
+
+        .promise-icon img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .promise-item h3 {
@@ -792,9 +804,7 @@
                 <a href="#estimate" class="hero-btn">무료 견적 받기</a>
             </div>
             <div class="hero-image">
-                <div class="hero-image-placeholder">
-                    🕯️ 이미지 영역
-                </div>
+                <img src="images/1.png" alt="따뜻하고 평온한 추모 이미지">
             </div>
         </div>
     </section>
@@ -885,32 +895,32 @@
 
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🏥</div>
+                    <div class="service-icon"><img src="images/2.png" alt="장례식장 안내"></div>
                     <h3>장례식장 안내</h3>
                     <p>지역별 장례식장 정보와 빈소 예약을 도와드립니다. 시설, 비용, 접근성을 고려한 최적의 장소를 추천해드립니다.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📋</div>
+                    <div class="service-icon"><img src="images/3.png" alt="장례 절차 안내"></div>
                     <h3>장례 절차 안내</h3>
                     <p>임종부터 장지까지 모든 절차를 상세히 안내해드립니다. 처음 경험하시는 분도 걱정 없이 진행하실 수 있습니다.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">💐</div>
+                    <div class="service-icon"><img src="images/4.png" alt="장례 용품"></div>
                     <h3>장례 용품</h3>
                     <p>수의, 관, 제단 용품 등 필요한 모든 물품을 정직한 가격에 제공합니다. 불필요한 추가 비용 없이 투명하게 안내합니다.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🚗</div>
+                    <div class="service-icon"><img src="images/5.png" alt="운구 서비스"></div>
                     <h3>운구 서비스</h3>
                     <p>병원에서 장례식장까지, 장례식장에서 장지까지 안전하고 정중하게 모시겠습니다.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📝</div>
+                    <div class="service-icon"><img src="images/6.png" alt="행정 서비스"></div>
                     <h3>행정 서비스</h3>
                     <p>사망신고, 화장 예약, 각종 서류 발급 등 복잡한 행정 절차를 대행해드립니다.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🙏</div>
+                    <div class="service-icon"><img src="images/7.png" alt="종교별 의례"></div>
                     <h3>종교별 의례</h3>
                     <p>불교, 기독교, 천주교, 무종교 등 종교와 가족의 뜻에 맞는 의례를 진행합니다.</p>
                 </div>
@@ -1018,7 +1028,7 @@
                     <p>사용하지 않은 물품은 100% 환불해드립니다. 필요한 것만 사용하시고 비용을 절감하세요.</p>
                 </div>
                 <div class="promise-item">
-                    <div class="promise-icon">🤝</div>
+                    <div class="promise-icon"><img src="images/8.png" alt="24시간 전문 상담"></div>
                     <h3>24시간 전문 상담</h3>
                     <p>언제든 연락 주세요. 경험 많은 전문 상담사가 24시간 대기하고 있습니다.</p>
                 </div>
