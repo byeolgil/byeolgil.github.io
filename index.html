@@ -331,6 +331,146 @@
             line-height: 1.8;
         }
 
+        /* 상품 안내 섹션 */
+        .products-section {
+            padding: 80px 20px;
+            background: white; /* Changed from background-warm for contrast with services */
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns for products */
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 968px) {
+            .product-grid {
+                grid-template-columns: 1fr; /* Single column on smaller screens */
+            }
+        }
+
+        .product-card {
+            background: var(--background-warm); /* Use background-warm for product cards for contrast */
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Lighter shadow */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .product-recommendation {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            margin-bottom: 25px;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .product-card h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .product-card ul {
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        .product-card ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            color: var(--text-gray);
+        }
+
+        .product-card ul li::before {
+            content: '✓';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .product-benefit {
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .common-notes {
+            margin-top: 60px;
+            padding: 30px;
+            background: #fff8f5; /* Lighter background for notes */
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .notes-title {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .common-notes ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .common-notes ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            color: var(--text-gray);
+        }
+
+        .common-notes ul li::before {
+            content: '•';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
         /* 약속 섹션 */
         .promise-section {
             padding: 80px 20px;
@@ -774,6 +914,88 @@
                     <h3>종교별 의례</h3>
                     <p>불교, 기독교, 천주교, 무종교 등 종교와 가족의 뜻에 맞는 의례를 진행합니다.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 상품 안내 섹션 -->
+    <section class="products-section" id="products">
+        <div class="products-container">
+            <h2 class="section-title" style="text-align: center;">별길상조 상품 안내</h2>
+            <p class="section-subtitle" style="text-align: center;">고객님의 상황에 맞는 상품을 선택하세요</p>
+
+            <div class="product-grid">
+                <!-- 상품 1: 무빈소장 -->
+                <div class="product-card">
+                    <h3 class="product-title">🌟 [상품 1] 무빈소장</h3>
+                    <p class="product-description">"가족 중심의 간소하고 정중한 마지막 인사"</p>
+                    <p>빈소를 차리지 않고 고인을 정성껏 모시는 실속형 상품입니다. 불필요한 절차는 줄이고, 고인에 대한 예우와 추모의 본질에 집중합니다.</p>
+                    <p class="product-price">가격: 149만원</p>
+                    <p class="product-recommendation">추천 대상: 조문객 없이 가족끼리 조용히 이별하고 싶으신 분, 합리적인 비용을 원하시는 분</p>
+
+                    <h4>인력 지원:</h4>
+                    <ul>
+                        <li>국가공인 장례지도사: 전 과정 밀착 케어 (접수부터 발인까지)</li>
+                        <li>전문 염습상례사: 고인을 정성을 다해 모시는 입관식 전담</li>
+                    </ul>
+
+                    <h4>제공 용품:</h4>
+                    <ul>
+                        <li>용품 일체: 수의, 규격 관, 입관용품 포함</li>
+                        <li>꽃(생화)관장식: 입관 시 고인을 위한 생화 장식 기본 포함</li>
+                        <li>유골함: 목함 제공</li>
+                    </ul>
+
+                    <h4>차량 서비스:</h4>
+                    <ul>
+                        <li>앰뷸런스: 관내 무료 이송 (임종지~장례식장)</li>
+                        <li>장의 차량: 리무진(화장장까지) 또는 버스(왕복 150km) 중 택 1</li>
+                    </ul>
+
+                    <p class="product-benefit">혜택: 별길상조 회원 시 고급 유골함 변경 30% 할인</p>
+                </div>
+
+                <!-- 상품 2: 일반장 (3일장) -->
+                <div class="product-card">
+                    <h3 class="product-title">💐 [상품 2] 일반장 (3일장)</h3>
+                    <p class="product-description">"전통의 예와 격식을 갖춘 품격 있는 작별"</p>
+                    <p>빈소를 마련하여 조문객을 맞이하고, 최고의 전문 인력들이 3일 동안 유가족의 곁을 지키며 모든 절차를 완벽하게 보좌합니다.</p>
+                    <p class="product-price">가격: 259만원</p>
+                    <p class="product-recommendation">추천 대상: 빈소를 갖춰 격식 있는 장례를 원하시는 분, 많은 조문객 응대가 필요하신 분</p>
+
+                    <h4>인력 지원:</h4>
+                    <ul>
+                        <li>국가공인 장례지도사: 3일 전 과정 밀착 케어</li>
+                        <li>전문 염습상례사: 격조 높은 입관 서비스 전담</li>
+                        <li>의전 도우미(4명): 빈소 세팅 및 조문객 응대 (각 10시간 기준)</li>
+                    </ul>
+
+                    <h4>제공 용품:</h4>
+                    <ul>
+                        <li>용품 일체: 빈소용품, 수의, 규격 관, 입관용품 완벽 포함</li>
+                        <li>꽃(생화)관장식: 고급 생화 관장식으로 품격 있는 입관</li>
+                        <li>유골함: 도자기 유골함 제공</li>
+                    </ul>
+
+                    <h4>차량 서비스:</h4>
+                    <ul>
+                        <li>앰뷸런스: 관내 무료 이송 (임종지~장례식장)</li>
+                        <li>장의 차량: 리무진 또는 버스(왕복 200km) 중 택 1</li>
+                    </ul>
+
+                    <p class="product-benefit">혜택: 별길상조 회원 시 고급 유골함 변경 30% 할인</p>
+                </div>
+            </div>
+
+            <!-- 공통 유의사항 -->
+            <div class="common-notes">
+                <h3 class="notes-title">⚠️ 공통 유의사항</h3>
+                <ul>
+                    <li>차량 거리 초과 시 1km당 2,000원의 추가 비용이 발생합니다.</li>
+                    <li>앰뷸런스 이용 시 관외 지역은 추가 비용이 발생합니다.</li>
+                    <li>유료 도로 통행료(도로비)는 별도입니다.</li>
+                    <li>[별길상조 회원 혜택] 고급 유골함으로 변경 시 30% 할인가 제공</li>
+                </ul>
             </div>
         </div>
     </section>
