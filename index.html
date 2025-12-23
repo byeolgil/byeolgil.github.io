@@ -12,6 +12,19 @@
      ============================================================ -->
 <head>
     <!-- ========================================
+         Google Analytics 4 (GA4)
+         - 웹사이트 방문자 분석 및 트래픽 추적
+         - 측정 ID: G-1234512345
+         ======================================== -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1234512345"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1234512345');
+    </script>
+
+    <!-- ========================================
          기본 메타 태그
          - charset: 문자 인코딩 (한글 지원)
          - viewport: 반응형 웹을 위한 뷰포트 설정
