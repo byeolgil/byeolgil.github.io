@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!-- ============================================================
+     별길상조 - 404 페이지 (페이지를 찾을 수 없음)
+
+     GitHub Pages에서 존재하지 않는 URL 접근 시 자동으로 이 페이지 표시
+     [최종 수정일] 2025-12-23
+     ============================================================ -->
+<head>
+    <!-- 기본 메타 태그 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO 메타 태그 (404 페이지는 검색 제외) -->
+    <title>페이지를 찾을 수 없습니다 - 별길상조</title>
+    <meta name="description" content="요청하신 페이지를 찾을 수 없습니다. 별길상조 홈페이지로 이동해 주세요.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="별길상조">
+    <meta property="og:title" content="페이지를 찾을 수 없습니다 - 별길상조">
+    <meta property="og:url" content="https://www.byeolgil.co.kr">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/6.png">
+    <link rel="apple-touch-icon" href="/images/6.png">
+
+    <!-- 모바일 브라우저 최적화 -->
+    <meta name="theme-color" content="#6B4E3D">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* CSS 변수 (메인 사이트와 동일) */
+        :root {
+            --primary-color: #6B4E3D;
+            --secondary-color: #8B6914;
+            --accent-color: #D4AF37;
+            --text-dark: #2C2C2C;
+            --text-light: #666666;
+            --bg-light: #F9F7F4;
+            --bg-warm: #FAF8F5;
+            --white: #FFFFFF;
+            --font-serif: 'Noto Serif KR', Georgia, serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 헤더 */
+        header {
+            background: var(--white);
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .phone-link {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .phone-link:hover {
+            background: var(--secondary-color);
+        }
+
+        /* 메인 콘텐츠 */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .error-code {
+            font-family: var(--font-serif);
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .error-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .error-message {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .home-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .home-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(107, 78, 61, 0.3);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .contact-info p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .contact-phone {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* 푸터 */
+        footer {
+            background: var(--text-dark);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* 반응형 (모바일) */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 5rem;
+            }
+
+            .error-title {
+                font-size: 1.4rem;
+            }
+
+            .error-message {
+                font-size: 0.95rem;
+            }
+
+            .home-button {
+                padding: 12px 30px;
+                font-size: 0.95rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .phone-link {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">별길상조</a>
+            <a href="tel:010-4396-3722" class="phone-link">010-4396-3722</a>
+        </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main>
+        <div class="error-container">
+            <div class="error-code">404</div>
+            <h1 class="error-title">페이지를 찾을 수 없습니다</h1>
+            <p class="error-message">
+                요청하신 페이지가 존재하지 않거나 이동되었습니다.<br>
+                주소를 다시 확인하시거나 홈페이지로 이동해 주세요.
+            </p>
+            <a href="/" class="home-button">홈페이지로 이동</a>
+
+            <div class="contact-info">
+                <p>도움이 필요하시면 언제든지 연락주세요</p>
+                <p class="contact-phone">010-4396-3722</p>
+                <p>24시간 상담 가능</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer>
+        &copy; 2025 별길상조. All rights reserved.
+    </footer>
+</body>
+</html>
