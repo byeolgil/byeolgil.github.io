@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!-- ============================================================
+     별길상조 - 이용약관
+     ============================================================ -->
+<head>
+    <!-- 기본 메타 태그 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO 메타 태그 -->
+    <title>이용약관 - 별길상조</title>
+    <meta name="description" content="별길상조의 이용약관입니다. 장례 서비스 이용 시 적용되는 약관을 확인하세요.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="이용약관 - 별길상조">
+    <meta property="og:description" content="별길상조의 이용약관입니다.">
+    <meta property="og:url" content="https://www.byeolgil.co.kr/terms.html">
+
+    <!-- 스타일 -->
+    <link rel="icon" type="image/png" href="images/6.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #000080;
+            --primary-light: #1a1a9a;
+            --secondary-color: #B8860B;
+            --background-warm: #f0f4f8;
+            --background-card: #ffffff;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --text-light: #999999;
+            --border-color: #e5e5e5;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-warm);
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            z-index: 10000;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* 헤더 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.05em;
+        }
+
+        .logo .highlight {
+            color: var(--secondary-color);
+        }
+
+        /* 메인 컨텐츠 */
+        main {
+            max-width: 1200px;
+            margin: 100px auto 0;
+            padding: 40px 20px;
+            min-height: calc(100vh - 250px);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-family: 'Noto Serif KR', serif;
+        }
+
+        .page-subtitle {
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        .content-box {
+            background: var(--background-card);
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .content-box h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 15px;
+        }
+
+        .content-box h2:first-child {
+            margin-top: 0;
+        }
+
+        .content-box h3 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .content-box ul,
+        .content-box ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-gray);
+        }
+
+        .content-box li {
+            margin-bottom: 8px;
+            line-height: 1.8;
+        }
+
+        .highlight-text {
+            background-color: #fffacd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* 푸터 */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-info p {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .footer-logo .highlight {
+            color: var(--secondary-color);
+        }
+
+        .footer-links h4 {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            main {
+                margin-top: 80px;
+                padding: 20px 15px;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .content-box h2 {
+                font-size: 1.3rem;
+                margin-top: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">메인 콘텐츠로 이동</a>
+
+    <!-- 헤더 -->
+    <header role="banner">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text"><span class="highlight">별</span>길상조</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main id="main" role="main">
+        <h1 class="page-title">이용약관</h1>
+        <p class="page-subtitle">마지막 수정일: 2025년 12월</p>
+
+        <article class="content-box">
+            <h2>제1장 총칙</h2>
+
+            <h3>제1조 (목적)</h3>
+            <p>본 약관은 별길상조 주식회사(이하 "회사")가 제공하는 장례 서비스(이하 "서비스")의 이용에 관한 기본적인 사항을 규정함을 목적으로 합니다.</p>
+
+            <h3>제2조 (용어의 정의)</h3>
+            <ul>
+                <li>"회사"란 별길상조 주식회사를 의미합니다.</li>
+                <li>"이용자"란 본 약관에 동의하여 회사로부터 서비스를 받는 개인 또는 법인을 의미합니다.</li>
+                <li>"서비스"란 회사가 제공하는 장례 관련 상담, 용역, 상품 등 모든 형태의 서비스를 의미합니다.</li>
+                <li>"콘텐츠"란 회사가 서비스를 통해 제공하는 문자, 이미지, 동영상 등 모든 정보 및 자료를 의미합니다.</li>
+            </ul>
+
+            <h3>제3조 (약관의 효력)</h3>
+            <p>본 약관은 이용자가 서비스를 신청할 때 효력이 발생하며, 이용자가 서비스 신청 시 본 약관에 동의한 것으로 간주됩니다.</p>
+
+            <h2>제2장 서비스 제공 및 변경</h2>
+
+            <h3>제4조 (서비스 제공)</h3>
+            <ul>
+                <li>회사는 이용자에게 24시간 장례 상담 및 컨설팅 서비스를 제공합니다.</li>
+                <li>제공되는 서비스의 종류는 다음과 같습니다:
+                    <ul>
+                        <li>무빈소장 (간소한 가족장례)</li>
+                        <li>일반장 (전통적인 장례식장 이용)</li>
+                        <li>화장장 예약 및 진행</li>
+                        <li>장례식장 예약 및 진행</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>제5조 (서비스 변경 및 중단)</h3>
+            <ul>
+                <li>회사는 서비스 개선을 위해 서비스 내용을 변경할 수 있습니다.</li>
+                <li>서비스 변경 시 사전에 공지하며, 긴급한 경우 사후 공지할 수 있습니다.</li>
+                <li>천재지변, 전쟁, 폭동, 역병 등 불가항력적 사유로 인해 서비스 제공이 불가능한 경우 서비스를 중단할 수 있습니다.</li>
+            </ul>
+
+            <h2>제3장 이용자의 의무</h2>
+
+            <h3>제6조 (이용자의 책임)</h3>
+            <ul>
+                <li>이용자는 본 약관에 따라 서비스를 이용해야 합니다.</li>
+                <li>이용자가 입력한 정보의 정확성과 완전성에 대해 책임을 집니다.</li>
+                <li>이용자는 타인의 정보를 도용하거나 허위 정보를 입력하지 않아야 합니다.</li>
+            </ul>
+
+            <h3>제7조 (금지 행위)</h3>
+            <p>이용자는 서비스 이용 시 다음의 행위를 금지합니다:</p>
+            <ul>
+                <li>법령 또는 공공질서, 미풍양속을 위반하는 행위</li>
+                <li>타인의 명예를 훼손하거나 개인정보를 유출하는 행위</li>
+                <li>회사의 시스템에 해를 끼치거나 부정행위를 시도하는 행위</li>
+                <li>다른 이용자의 서비스 이용을 방해하는 행위</li>
+                <li>거짓 또는 기만적인 행위</li>
+            </ul>
+
+            <h2>제4장 비용 및 환불</h2>
+
+            <h3>제8조 (서비스 비용)</h3>
+            <ul>
+                <li>회사는 투명한 가격 정찰제를 원칙으로 합니다.</li>
+                <li>모든 비용은 서비스 제공 전에 명확하게 안내합니다.</li>
+                <li>별도의 합의가 있는 경우를 제외하고는 숨겨진 비용을 청구하지 않습니다.</li>
+            </ul>
+
+            <h3>제9조 (환불 정책)</h3>
+            <ul>
+                <li>미사용 품목에 대해서는 100% 환불합니다.</li>
+                <li>환불 요청은 서비스 완료 후 30일 이내에 신청해야 합니다.</li>
+                <li>환불은 원래의 결제 수단으로 처리됩니다.</li>
+            </ul>
+
+            <h3>제10조 (추가 비용)</h3>
+            <ul>
+                <li>차량 거리 초과 시 1km당 2,000원의 추가 비용이 발생합니다.</li>
+                <li>앰뷸런스 이용 시 관외 지역은 추가 비용이 발생합니다.</li>
+                <li>유료 도로 통행료(도로비)는 별도입니다.</li>
+            </ul>
+
+            <h2>제5장 개인정보 보호</h2>
+
+            <h3>제11조 (개인정보 보호)</h3>
+            <p>회사는 이용자의 개인정보를 <span class="highlight-text">개인정보처리방침</span>에 따라 보호합니다. 자세한 내용은 개인정보처리방침을 참고하세요.</p>
+
+            <h2>제6장 면책 및 손해배상</h2>
+
+            <h3>제12조 (회사의 면책)</h3>
+            <ul>
+                <li>회사는 다음의 경우로 인한 손해에 대해 책임을 지지 않습니다:
+                    <ul>
+                        <li>천재지변, 전쟁, 폭동 등 불가항력적 사유</li>
+                        <li>이용자의 과실로 인한 손해</li>
+                        <li>타사 서비스의 오류나 중단</li>
+                        <li>이용자가 제공한 부정확한 정보로 인한 손해</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>제13조 (손해배상 청구)</h3>
+            <ul>
+                <li>이용자가 서비스 이용으로 인한 손해를 청구하는 경우, 실제 발생한 직접 손해만을 배상합니다.</li>
+                <li>간접 손해, 특별 손해 또는 기대 이익 손실에 대해서는 배상하지 않습니다.</li>
+            </ul>
+
+            <h2>제7장 분쟁 해결</h2>
+
+            <h3>제14조 (분쟁 해결)</h3>
+            <ul>
+                <li>본 약관으로 인한 분쟁이 발생하는 경우, 이용자와 회사는 상호 협력하여 해결하기 위해 노력합니다.</li>
+                <li>협의로 해결되지 않는 경우, 관할 법원은 회사의 소재지 관할 법원으로 합니다.</li>
+            </ul>
+
+            <h3>제15조 (준거법)</h3>
+            <p>본 약관은 대한민국의 법률에 따라 해석되고 규율됩니다.</p>
+
+            <h2>제8장 기타</h2>
+
+            <h3>제16조 (약관 개정)</h3>
+            <ul>
+                <li>회사는 필요한 경우 본 약관을 개정할 수 있습니다.</li>
+                <li>약관 개정 시 개정 내용과 개정 시행일을 사전에 공지합니다.</li>
+                <li>개정된 약관에 동의하지 않는 경우 서비스 이용을 중단할 수 있습니다.</li>
+            </ul>
+
+            <h3>제17조 (연락처)</h3>
+            <p>서비스 이용 중 궁금한 사항이나 불만 사항이 있을 경우, 다음으로 연락주시기 바랍니다:</p>
+            <ul>
+                <li>전화: 1844-2241 (24시간 상담 가능)</li>
+                <li>이메일: contact@byeolgil.co.kr</li>
+            </ul>
+        </article>
+    </main>
+
+    <!-- 푸터 -->
+    <footer role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- 회사 정보 영역 -->
+                <div class="footer-info">
+                    <div class="footer-logo"><img src="images/6.png" alt="별길상조 로고" width="40" height="40" loading="lazy" decoding="async"><span class="footer-logo-text"><span class="highlight">별</span>길상조</span></div>
+                    <p>상호 : 별길상조 주식회사</p>
+                    <p>대표 : 이남호</p>
+                    <p>사업자등록번호: 000-00-00000</p>
+                    <p>주소 : 경기도 구리시 경춘로 242번길 30, 3층(수택동) 54호실</p>
+                    <p>이메일 : contact@byeolgil.co.kr</p>
+                </div>
+                <!-- 서비스 링크 -->
+                <div class="footer-links">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="index.html#estimate">장례 견적</a></li>
+                        <li><a href="index.html#services">서비스 안내</a></li>
+                        <li><a href="index.html#products">상품 안내</a></li>
+                        <li><a href="index.html#reviews">고객 후기</a></li>
+                    </ul>
+                </div>
+                <!-- 고객지원 링크 -->
+                <div class="footer-links">
+                    <h4>고객지원</h4>
+                    <ul>
+                        <li><a href="index.html#contact">연락처</a></li>
+                        <li><a href="terms.html">이용약관</a></li>
+                        <li><a href="privacy.html">개인정보처리방침</a></li>
+                        <li><a href="index.html#contact">제휴 문의</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 저작권 표시 -->
+            <div class="footer-bottom">
+                <p>© 2020 별길상조. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
