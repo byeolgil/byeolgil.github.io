@@ -1,4 +1,38 @@
+# ============================================================
+# 별길상조 - robots.txt
+# 검색엔진 크롤러 접근 규칙 설정
+# ============================================================
+
+# 모든 검색엔진 크롤러 허용
 User-agent: *
 Allow: /
 
-Sitemap: https://byeolgil.github.io/sitemap.xml
+# 404 페이지는 크롤링 제외
+Disallow: /404.html
+
+# 사이트맵 위치
+Sitemap: https://www.byeolgil.co.kr/sitemap.xml
+
+# ============================================================
+# 주요 검색엔진별 설정
+# ============================================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /404.html
+
+# Naver
+User-agent: Yeti
+Allow: /
+Disallow: /404.html
+
+# Daum
+User-agent: Daumoa
+Allow: /
+Disallow: /404.html
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /404.html

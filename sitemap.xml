@@ -1,9 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://byeolgil.github.io/</loc>
-    <lastmod>2024-12-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+<!-- ============================================================
+     별길상조 - sitemap.xml
+     검색엔진에 사이트 구조 및 페이지 정보 제공
+     
+     [참고]
+     - changefreq: 페이지 업데이트 빈도 (always, hourly, daily, weekly, monthly, yearly, never)
+     - priority: 페이지 중요도 (0.0 ~ 1.0)
+     ============================================================ -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+    <!-- 메인 페이지 (홈) -->
+    <url>
+        <loc>https://www.byeolgil.co.kr/</loc>
+        <lastmod>2025-12-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- 섹션별 앵커 링크 (선택사항 - 검색엔진이 섹션 인식에 도움) -->
+    
+    <!-- 장례 비용 견적 섹션 -->
+    <url>
+        <loc>https://www.byeolgil.co.kr/#estimate</loc>
+        <lastmod>2025-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- 서비스 안내 섹션 -->
+    <url>
+        <loc>https://www.byeolgil.co.kr/#services</loc>
+        <lastmod>2025-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- 상품 안내 섹션 -->
+    <url>
+        <loc>https://www.byeolgil.co.kr/#products</loc>
+        <lastmod>2025-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- 별길의 약속 섹션 -->
+    <url>
+        <loc>https://www.byeolgil.co.kr/#promise</loc>
+        <lastmod>2025-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 고객 후기 섹션 -->
+    <url>
+        <loc>https://www.byeolgil.co.kr/#reviews</loc>
+        <lastmod>2025-12-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 연락처 섹션 -->
+    <url>
+        <loc>https://www.byeolgil.co.kr/#contact</loc>
+        <lastmod>2025-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
 </urlset>
