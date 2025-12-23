@@ -1,0 +1,42 @@
+{
+    "name": "별길상조 - 구리시·남양주시 후불상조 전문",
+    "short_name": "별길상조",
+    "description": "구리시, 남양주시 지역 후불식상조 전문. 장례식장, 화장장, 무빈소 장례까지 24시간 상담 가능합니다.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#F9F7F4",
+    "theme_color": "#6B4E3D",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "ko",
+    "categories": ["business", "lifestyle"],
+    "icons": [
+        {
+            "src": "images/6.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "images/6.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "무료 견적 받기",
+            "short_name": "견적",
+            "description": "장례 비용 무료 견적 신청",
+            "url": "/#estimate",
+            "icons": [{ "src": "images/6.png", "sizes": "96x96" }]
+        },
+        {
+            "name": "전화 상담",
+            "short_name": "전화",
+            "description": "24시간 전화 상담",
+            "url": "tel:010-4396-3722"
+        }
+    ]
+}

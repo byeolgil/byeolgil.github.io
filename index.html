@@ -145,6 +145,13 @@
     <link rel="apple-touch-icon" href="images/6.png">
 
     <!-- ========================================
+         PWA (Progressive Web App) 설정
+         - manifest: 웹앱 매니페스트 파일 연결
+         - 홈 화면 추가, 오프라인 지원 등 PWA 기능 활성화
+         ======================================== -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- ========================================
          리소스 힌트 (Resource Hints)
          - dns-prefetch: DNS 조회 미리 수행
          - preconnect: 연결 미리 수립
@@ -2242,6 +2249,25 @@
             }
         });
     })();
+    </script>
+
+    <!-- ============================================================
+         Service Worker 등록
+         - PWA 오프라인 기능 및 캐싱 지원
+         - 브라우저가 Service Worker를 지원하는 경우에만 등록
+         ============================================================ -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('[PWA] Service Worker 등록 성공:', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('[PWA] Service Worker 등록 실패:', error);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
