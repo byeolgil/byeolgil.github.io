@@ -402,6 +402,161 @@
             background: var(--primary-light);
         }
 
+        /* 개인정보 동의 체크박스 스타일 */
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        .checkbox-text {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .privacy-link {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-left: 10px;
+            text-decoration: none;
+        }
+
+        .privacy-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--background-warm);
+        }
+
+        .modal-header h3 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-gray);
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--text-dark);
+        }
+
+        .modal-body {
+            padding: 25px;
+            overflow-y: auto;
+            max-height: 50vh;
+        }
+
+        .modal-body p {
+            margin-bottom: 20px;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .modal-body h4 {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin: 20px 0 10px 0;
+        }
+
+        .modal-body ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
+
+        .modal-body ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .modal-body ul li::before {
+            content: '•';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .modal-footer-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 20px;
+        }
+
+        .modal-footer {
+            padding: 15px 25px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .modal-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .modal-btn:hover {
+            background: var(--primary-light);
+        }
+
         /* ========================================
            서비스 섹션 스타일
            - 제공 서비스 6개를 3열 그리드로 표시
@@ -1100,6 +1255,15 @@
                         </div>
                     </div>
 
+                    <!-- 개인정보 동의 체크박스 -->
+                    <div class="form-group" style="margin-top: 20px; margin-bottom: 10px;">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="privacyAgree" required>
+                            <span class="checkbox-text">개인정보 수집 및 이용에 동의합니다 (필수)</span>
+                        </label>
+                        <a href="#" id="privacyModalOpen" class="privacy-link">[전문보기]</a>
+                    </div>
+
                     <!-- 제출 버튼 -->
                     <button type="submit" class="estimate-btn">견적 상담 신청하기</button>
                 </form>
@@ -1411,6 +1575,52 @@
     </footer>
 
     <!-- ============================================================
+         개인정보 수집 및 이용 동의 모달
+         - 전문보기 클릭 시 표시되는 팝업
+         - 개인정보 수집 항목, 목적, 보유기간 등 안내
+         ============================================================ -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>개인정보 수집 및 이용 동의</h3>
+                <button class="modal-close" id="privacyModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>별길상조 주식회사(이하 "회사")는 견적 상담 서비스 제공을 위해 아래와 같이 개인정보를 수집 및 이용합니다.</p>
+
+                <h4>1. 수집하는 개인정보 항목</h4>
+                <ul>
+                    <li>필수항목: 성함, 연락처, 지역, 예상 조문객 수, 현재 상황</li>
+                </ul>
+
+                <h4>2. 개인정보의 수집 및 이용 목적</h4>
+                <ul>
+                    <li>장례 비용 견적 상담 서비스 제공</li>
+                    <li>상담 문의에 대한 답변 및 연락</li>
+                    <li>서비스 관련 안내 및 정보 제공</li>
+                </ul>
+
+                <h4>3. 개인정보의 보유 및 이용 기간</h4>
+                <ul>
+                    <li>수집일로부터 <strong>1년간</strong> 보유 후 파기</li>
+                    <li>단, 관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관</li>
+                </ul>
+
+                <h4>4. 동의 거부 권리 및 불이익</h4>
+                <ul>
+                    <li>귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다.</li>
+                    <li>다만, 동의를 거부하실 경우 견적 상담 서비스 이용이 제한됩니다.</li>
+                </ul>
+
+                <p class="modal-footer-text">※ 자세한 사항은 회사의 개인정보처리방침을 참고해 주시기 바랍니다.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn" id="privacyModalConfirm">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
          JavaScript - 견적 폼 제출 처리
 
          [동작 방식]
@@ -1432,10 +1642,19 @@
         // DOM 요소 참조
         const form = document.getElementById('customEstimateForm');
         const submitBtn = form.querySelector('.estimate-btn');
+        const privacyCheckbox = document.getElementById('privacyAgree');
         const originalBtnText = submitBtn.textContent;
 
         // 폼 제출 이벤트 핸들러
-        form.addEventListener('submit', function() {
+        form.addEventListener('submit', function(e) {
+            // 개인정보 동의 체크 확인
+            if (!privacyCheckbox.checked) {
+                e.preventDefault(); // 폼 제출 중단
+                alert('개인정보 수집 및 이용에 동의해주세요.');
+                privacyCheckbox.focus();
+                return false;
+            }
+
             submitted = true;
             // 버튼 상태 변경: 전송 중 표시
             submitBtn.textContent = '전송 중...';
@@ -1465,6 +1684,49 @@
                 }, 500);
             }
         };
+
+        // ========================================
+        // 개인정보 동의 모달 제어
+        // ========================================
+        const modal = document.getElementById('privacyModal');
+        const modalOpenBtn = document.getElementById('privacyModalOpen');
+        const modalCloseBtn = document.getElementById('privacyModalClose');
+        const modalConfirmBtn = document.getElementById('privacyModalConfirm');
+
+        // 모달 열기
+        modalOpenBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+        });
+
+        // 모달 닫기 (X 버튼)
+        modalCloseBtn.addEventListener('click', function() {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+
+        // 모달 닫기 (확인 버튼)
+        modalConfirmBtn.addEventListener('click', function() {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+
+        // 모달 외부 클릭 시 닫기
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
     })();
     </script>
 </body>
