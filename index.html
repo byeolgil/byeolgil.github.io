@@ -33,6 +33,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- ========================================
+         캐시 제어 메타 태그
+         - 브라우저가 항상 서버에서 최신 버전을 확인하도록 설정
+         - no-cache: 캐시 사용 전 서버에 재검증 요청
+         - must-revalidate: 만료된 캐시는 반드시 재검증
+         ======================================== -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- ========================================
          SEO (검색엔진 최적화) 메타 태그
          - title: 검색 결과에 표시되는 페이지 제목
          - description: 검색 결과 설명문 (160자 이내 권장)
@@ -57,7 +67,6 @@
 	<meta name="naver-site-verification" content="b242f9a6f9903ae5c715624ec702a282553dd12e" /> 
     <meta name="google-site-verification" content="1234512345">
     <meta name="msvalidate.01" content="123451234512345">
-    <meta name="verify-v1" content="123451234512345">
 
     <!-- ========================================
          추가 SEO 메타 태그
