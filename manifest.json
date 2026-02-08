@@ -29,14 +29,15 @@
             "name": "무료 견적 받기",
             "short_name": "견적",
             "description": "장례 비용 무료 견적 신청",
-            "url": "/#estimate",
+            "url": "/index.html#estimate",
             "icons": [{ "src": "images/6.png", "sizes": "96x96" }]
         },
         {
             "name": "전화 상담",
             "short_name": "전화",
             "description": "24시간 전화 상담",
-            "url": "tel:1844-2241"
+            "url": "/index.html#contact",
+            "icons": [{ "src": "images/6.png", "sizes": "96x96" }]
         }
     ]
 }
