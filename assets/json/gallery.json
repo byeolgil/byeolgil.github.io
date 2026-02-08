@@ -1,0 +1,84 @@
+{
+  "title": "장례후기",
+  "subtitle": "별길상조와 함께한 소중한 순간들입니다",
+  "images": [
+    {
+      "src": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=500&fit=crop",
+      "alt": "추모 꽃 장식",
+      "details": [
+        { "src": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1200&h=800&fit=crop", "alt": "추모 꽃 장식 - 전체 모습" },
+        { "src": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1200&h=800&fit=crop", "alt": "추모 꽃 장식 - 세부 1" },
+        { "src": "https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=1200&h=800&fit=crop", "alt": "추모 꽃 장식 - 세부 2" }
+      ]
+    },
+
+    {
+      "src": "https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=400&h=500&fit=crop",
+      "alt": "추모 촛불",
+      "details": [
+        { "src": "https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=1200&h=800&fit=crop", "alt": "추모 촛불 - 전체 모습" },
+        { "src": "https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=1200&h=800&fit=crop", "alt": "추모 촛불 - 분위기" },
+        { "src": "https://images.unsplash.com/photo-1513171920199-abf7d7c6a1cd?w=1200&h=800&fit=crop", "alt": "추모 촛불 - 세부" }
+      ]
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=400&h=500&fit=crop",
+      "alt": "흰 국화 장식",
+      "details": [
+        { "src": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1200&h=800&fit=crop", "alt": "흰 국화 장식 - 전체" },
+        { "src": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1200&h=800&fit=crop", "alt": "흰 국화 장식 - 클로즈업" }
+      ]
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1502977249166-824b3a8a4d6d?w=400&h=500&fit=crop",
+      "alt": "평화로운 추모 공간",
+      "details": [
+        { "src": "https://images.unsplash.com/photo-1502977249166-824b3a8a4d6d?w=1200&h=800&fit=crop", "alt": "추모 공간 - 전체 전경" },
+        { "src": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop", "alt": "추모 공간 - 자연 풍경" },
+        { "src": "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=1200&h=800&fit=crop", "alt": "추모 공간 - 일출" }
+      ]
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=400&h=500&fit=crop",
+      "alt": "꽃 장식 세부",
+      "details": [
+        { "src": "https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=1200&h=800&fit=crop", "alt": "꽃 장식 - 메인" },
+        { "src": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1200&h=800&fit=crop", "alt": "꽃 장식 - 전체" }
+      ]
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=400&h=500&fit=crop",
+      "alt": "촛불 추모식",
+      "details": [
+        { "src": "https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=1200&h=800&fit=crop", "alt": "촛불 추모식 - 전경" },
+        { "src": "https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=1200&h=800&fit=crop", "alt": "촛불 추모식 - 분위기" },
+        { "src": "https://images.unsplash.com/photo-1513171920199-abf7d7c6a1cd?w=1200&h=800&fit=crop", "alt": "촛불 추모식 - 세부" }
+      ]
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=400&h=500&fit=crop",
+      "alt": "흰 꽃 헌화",
+      "details": [
+        { "src": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1200&h=800&fit=crop", "alt": "흰 꽃 헌화 - 전체" },
+        { "src": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1200&h=800&fit=crop", "alt": "흰 꽃 헌화 - 세부" }
+      ]
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400&h=500&fit=crop",
+      "alt": "자연 속 추모",
+      "details": [
+        { "src": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1200&h=800&fit=crop", "alt": "자연 속 추모 - 전경" },
+        { "src": "https://images.unsplash.com/photo-1444930694458-01babf71870c?w=1200&h=800&fit=crop", "alt": "자연 속 추모 - 숲" },
+        { "src": "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=1200&h=800&fit=crop", "alt": "자연 속 추모 - 평화" }
+      ]
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=400&h=500&fit=crop",
+      "alt": "고요한 추모 공간",
+      "details": [
+        { "src": "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=1200&h=800&fit=crop", "alt": "고요한 추모 공간 - 전체" },
+        { "src": "https://images.unsplash.com/photo-1502977249166-824b3a8a4d6d?w=1200&h=800&fit=crop", "alt": "고요한 추모 공간 - 풍경" }
+      ]
+    }
+  ]
+}

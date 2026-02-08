@@ -1604,6 +1604,268 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* ========================================
+           갤러리 슬라이더 섹션
+           - 10개 이미지 카드 자동 슬라이드
+           - CSS-only 무한 스크롤 애니메이션
+           ======================================== */
+        .gallery-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow: hidden;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .gallery-slider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 20px;
+            animation: slideGallery 30s linear infinite;
+            width: calc((280px + 20px) * 20);
+        }
+
+        .gallery-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes slideGallery {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-280px * 10 - 200px));
+            }
+        }
+
+        .gallery-card {
+            flex-shrink: 0;
+            width: 280px;
+            height: 380px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            padding: 15px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #333;
+            background: white;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .gallery-caption .detail-count {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* 갤러리 반응형 */
+        @media (max-width: 768px) {
+            .gallery-section {
+                padding: 60px 15px;
+            }
+
+            .gallery-card {
+                width: 220px;
+                height: 310px;
+            }
+
+            .gallery-card img {
+                height: 230px;
+            }
+
+            .gallery-caption {
+                padding: 12px;
+                font-size: 0.85rem;
+            }
+
+            .gallery-track {
+                gap: 15px;
+                width: calc((220px + 15px) * 20);
+                animation-duration: 25s;
+            }
+
+            @keyframes slideGallery {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-220px * 10 - 150px));
+                }
+            }
+        }
+
+        /* ========================================
+           갤러리 모달 스타일
+           ======================================== */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 1;
+        }
+
+        .gallery-modal-content {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-modal-caption {
+            color: white;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .gallery-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 10001;
+        }
+
+        .gallery-modal-close:hover {
+            color: #ccc;
+        }
+
+        .gallery-modal-hint {
+            position: absolute;
+            bottom: 30px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .gallery-modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 20px;
+            user-select: none;
+            transition: color 0.3s, background 0.3s;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            z-index: 10001;
+        }
+
+        .gallery-modal-nav:hover {
+            color: #fff;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .gallery-modal-prev {
+            left: 20px;
+        }
+
+        .gallery-modal-next {
+            right: 20px;
+        }
+
+        .gallery-modal-counter {
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-modal-content {
+                max-width: 95%;
+                max-height: 60%;
+            }
+
+            .gallery-modal-caption {
+                font-size: 1rem;
+            }
+
+            .gallery-modal-close {
+                top: 15px;
+                right: 20px;
+                font-size: 30px;
+            }
+
+            .gallery-modal-nav {
+                font-size: 30px;
+                padding: 15px;
+            }
+
+            .gallery-modal-prev {
+                left: 10px;
+            }
+
+            .gallery-modal-next {
+                right: 10px;
+            }
+
+            .gallery-modal-counter {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1632,6 +1894,7 @@
                     <li><a href="#estimate">장례견적</a></li>
                     <li><a href="#services">서비스안내</a></li>
                     <li><a href="#promise">별길의 약속</a></li>
+                    <li><a href="#gallery">장례후기</a></li>
                     <li><a href="#reviews">고객후기</a></li>
                 </ul>
             </nav>
@@ -1954,6 +2217,229 @@
     </section>
 
     <!-- ============================================================
+         갤러리 섹션 (Gallery Section)
+         - 10개 이미지 카드 자동 슬라이드
+         - 무한 스크롤 애니메이션
+         ============================================================ -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-container">
+            <h2 class="section-title" id="gallery-title">장례후기</h2>
+            <p class="section-subtitle" id="gallery-subtitle">별길상조와 함께한 소중한 순간들입니다</p>
+
+            <div class="gallery-slider">
+                <div class="gallery-track" id="gallery-track">
+                    <!-- JSON에서 동적으로 로드됩니다 -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 갤러리 모달 -->
+    <div class="gallery-modal" id="gallery-modal">
+        <span class="gallery-modal-close" id="gallery-modal-close">&times;</span>
+        <div class="gallery-modal-counter" id="gallery-modal-counter">1 / 15</div>
+        <span class="gallery-modal-nav gallery-modal-prev" id="gallery-modal-prev">&#10094;</span>
+        <img class="gallery-modal-content" id="gallery-modal-img" src="" alt="">
+        <span class="gallery-modal-nav gallery-modal-next" id="gallery-modal-next">&#10095;</span>
+        <div class="gallery-modal-caption" id="gallery-modal-caption"></div>
+        <div class="gallery-modal-hint">좌우 화살표 또는 키보드로 이동 | 아무 곳이나 클릭하여 닫기</div>
+    </div>
+
+    <!-- 갤러리 이미지 로드 스크립트 -->
+    <script>
+        (function() {
+            // Fallback 데이터 (로컬 file:// 프로토콜에서 fetch 실패 시 사용)
+            var fallbackData = {
+                title: "장례후기",
+                subtitle: "별길상조와 함께한 소중한 순간들입니다",
+                images: [
+                    { src: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=500&fit=crop", alt: "추모 꽃 장식", details: [{ src: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1200&h=800&fit=crop", alt: "추모 꽃 장식 - 전체" }, { src: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1200&h=800&fit=crop", alt: "추모 꽃 장식 - 세부 1" }, { src: "https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=1200&h=800&fit=crop", alt: "추모 꽃 장식 - 세부 2" }] },
+                    { src: "https://images.unsplash.com/photo-1518882605630-8b04b6de8fab?w=400&h=500&fit=crop", alt: "장미 헌화", details: [{ src: "https://images.unsplash.com/photo-1518882605630-8b04b6de8fab?w=1200&h=800&fit=crop", alt: "장미 헌화 - 전체" }, { src: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=1200&h=800&fit=crop", alt: "장미 헌화 - 클로즈업" }] },
+                    { src: "https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=400&h=500&fit=crop", alt: "추모 촛불", details: [{ src: "https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=1200&h=800&fit=crop", alt: "추모 촛불 - 전체" }, { src: "https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=1200&h=800&fit=crop", alt: "추모 촛불 - 분위기" }] },
+                    { src: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=400&h=500&fit=crop", alt: "흰 국화 장식", details: [{ src: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1200&h=800&fit=crop", alt: "흰 국화 장식 - 전체" }, { src: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1200&h=800&fit=crop", alt: "흰 국화 장식 - 클로즈업" }] },
+                    { src: "https://images.unsplash.com/photo-1502977249166-824b3a8a4d6d?w=400&h=500&fit=crop", alt: "평화로운 추모 공간", details: [{ src: "https://images.unsplash.com/photo-1502977249166-824b3a8a4d6d?w=1200&h=800&fit=crop", alt: "추모 공간 - 전체" }, { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop", alt: "추모 공간 - 자연" }] },
+                    { src: "https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=400&h=500&fit=crop", alt: "꽃 장식 세부", details: [{ src: "https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=1200&h=800&fit=crop", alt: "꽃 장식 - 메인" }, { src: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1200&h=800&fit=crop", alt: "꽃 장식 - 전체" }] },
+                    { src: "https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=400&h=500&fit=crop", alt: "촛불 추모식", details: [{ src: "https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=1200&h=800&fit=crop", alt: "촛불 추모식 - 전경" }, { src: "https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=1200&h=800&fit=crop", alt: "촛불 추모식 - 분위기" }] },
+                    { src: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=400&h=500&fit=crop", alt: "흰 꽃 헌화", details: [{ src: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1200&h=800&fit=crop", alt: "흰 꽃 헌화 - 전체" }, { src: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1200&h=800&fit=crop", alt: "흰 꽃 헌화 - 세부" }] },
+                    { src: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400&h=500&fit=crop", alt: "자연 속 추모", details: [{ src: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1200&h=800&fit=crop", alt: "자연 속 추모 - 전경" }, { src: "https://images.unsplash.com/photo-1444930694458-01babf71870c?w=1200&h=800&fit=crop", alt: "자연 속 추모 - 숲" }] },
+                    { src: "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=400&h=500&fit=crop", alt: "고요한 추모 공간", details: [{ src: "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=1200&h=800&fit=crop", alt: "고요한 추모 공간 - 전체" }, { src: "https://images.unsplash.com/photo-1502977249166-824b3a8a4d6d?w=1200&h=800&fit=crop", alt: "고요한 추모 공간 - 풍경" }] }
+                ]
+            };
+
+            // 갤러리 원본 데이터 및 현재 상세 이미지 저장
+            var galleryData = [];
+            var currentDetailImages = [];
+            var currentIndex = 0;
+            var currentMainTitle = '';
+
+            // 모달 요소
+            var modal = document.getElementById('gallery-modal');
+            var modalImg = document.getElementById('gallery-modal-img');
+            var modalCaption = document.getElementById('gallery-modal-caption');
+            var modalClose = document.getElementById('gallery-modal-close');
+            var modalCounter = document.getElementById('gallery-modal-counter');
+            var modalPrev = document.getElementById('gallery-modal-prev');
+            var modalNext = document.getElementById('gallery-modal-next');
+
+            // 모달 이미지 업데이트
+            function updateModalImage() {
+                var img = currentDetailImages[currentIndex];
+                modalImg.src = img.src;
+                modalCaption.textContent = img.alt;
+                modalCounter.textContent = currentMainTitle + ' (' + (currentIndex + 1) + ' / ' + currentDetailImages.length + ')';
+
+                // 이미지가 1개면 화살표 숨기기
+                if (currentDetailImages.length <= 1) {
+                    modalPrev.style.display = 'none';
+                    modalNext.style.display = 'none';
+                } else {
+                    modalPrev.style.display = 'block';
+                    modalNext.style.display = 'block';
+                }
+            }
+
+            // 모달 열기 (대표 이미지 인덱스로)
+            function openModal(mainIndex) {
+                // 인덱스 범위 체크
+                if (mainIndex < 0 || mainIndex >= galleryData.length) {
+                    console.warn('잘못된 인덱스:', mainIndex);
+                    return;
+                }
+                var mainImage = galleryData[mainIndex];
+                if (!mainImage) {
+                    console.warn('이미지 데이터 없음:', mainIndex);
+                    return;
+                }
+                currentMainTitle = mainImage.alt || '';
+                currentDetailImages = (mainImage.details && mainImage.details.length > 0)
+                    ? mainImage.details
+                    : [{ src: mainImage.src.replace('w=400&h=500', 'w=1200&h=800'), alt: mainImage.alt || '' }];
+                currentIndex = 0;
+                updateModalImage();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // 모달 닫기
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // 이전 이미지
+            function prevImage(e) {
+                e.stopPropagation();
+                if (currentDetailImages.length <= 1) return;
+                currentIndex = (currentIndex - 1 + currentDetailImages.length) % currentDetailImages.length;
+                updateModalImage();
+            }
+
+            // 다음 이미지
+            function nextImage(e) {
+                e.stopPropagation();
+                if (currentDetailImages.length <= 1) return;
+                currentIndex = (currentIndex + 1) % currentDetailImages.length;
+                updateModalImage();
+            }
+
+            // 이벤트 리스너
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            modalImg.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            modalClose.addEventListener('click', closeModal);
+            modalPrev.addEventListener('click', prevImage);
+            modalNext.addEventListener('click', nextImage);
+
+            // 키보드 이벤트
+            document.addEventListener('keydown', function(e) {
+                if (!modal.classList.contains('active')) return;
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') prevImage(e);
+                if (e.key === 'ArrowRight') nextImage(e);
+            });
+
+            // 이미지 카드 생성 함수
+            function createCards(images) {
+                return images.map(function(img, index) {
+                    return '<div class="gallery-card" data-index="' + index + '">' +
+                           '<img src="' + img.src + '" alt="' + img.alt + '" loading="lazy">' +
+                           '<div class="gallery-caption">' + img.alt + '</div></div>';
+                }).join('');
+            }
+
+            // 갤러리 렌더링 함수
+            function renderGallery(data) {
+                galleryData = data.images;
+                var imageCount = galleryData.length;
+
+                document.getElementById('gallery-title').textContent = data.title;
+                document.getElementById('gallery-subtitle').textContent = data.subtitle;
+                var track = document.getElementById('gallery-track');
+                track.innerHTML = createCards(galleryData) + createCards(galleryData);
+
+                // 트랙 너비 및 애니메이션 동적 설정
+                var cardWidth = 280;
+                var gap = 20;
+                var totalWidth = (cardWidth + gap) * imageCount;
+                track.style.width = (totalWidth * 2) + 'px';
+
+                // 동적 keyframes 생성 (무한 반복 슬라이드)
+                var styleId = 'gallery-animation-style';
+                var existingStyle = document.getElementById(styleId);
+                if (existingStyle) existingStyle.remove();
+
+                var style = document.createElement('style');
+                style.id = styleId;
+                style.textContent = '@keyframes slideGallery { 0% { transform: translateX(0); } 100% { transform: translateX(-' + totalWidth + 'px); } }';
+                document.head.appendChild(style);
+
+                // 애니메이션 재시작
+                track.style.animation = 'none';
+                track.offsetHeight; // 리플로우 강제
+                track.style.animation = 'slideGallery 25s linear infinite';
+
+                // 카드 클릭 이벤트 추가 (이벤트 위임 사용)
+                track.onclick = function(e) {
+                    var card = e.target.closest('.gallery-card');
+                    if (card) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var index = parseInt(card.getAttribute('data-index'));
+                        if (!isNaN(index) && index >= 0 && index < galleryData.length) {
+                            openModal(index);
+                        }
+                        return false;
+                    }
+                };
+            }
+
+            // JSON 파일에서 데이터 로드 시도
+            console.log('갤러리 JSON 로드 시작...');
+            fetch('./assets/json/gallery.json')
+                .then(function(response) {
+                    console.log('fetch 응답:', response.status, response.ok);
+                    if (!response.ok) throw new Error('Network response was not ok: ' + response.status);
+                    return response.json();
+                })
+                .then(function(data) {
+                    console.log('JSON 로드 성공! 이미지 개수:', data.images.length);
+                    console.log('이미지 목록:', data.images.map(function(img) { return img.alt; }));
+                    renderGallery(data);
+                })
+                .catch(function(error) {
+                    console.error('JSON 로드 실패:', error);
+                    console.warn('fallback 데이터 사용 (이미지 개수:', fallbackData.images.length, ')');
+                    renderGallery(fallbackData);
+                });
+        })();
+    </script>
+
+    <!-- ============================================================
          후기 섹션 (Reviews Section)
          - 고객 평점 요약 (평균 4.9점)
          - 3개의 고객 후기 카드
@@ -2059,6 +2545,7 @@
                         <li><a href="#estimate">장례 견적</a></li>
                         <li><a href="#services">서비스 안내</a></li>
                         <li><a href="#products">상품 안내</a></li>
+                        <li><a href="#gallery">장례후기</a></li>
                         <li><a href="#reviews">고객 후기</a></li>
                     </ul>
                 </div>
