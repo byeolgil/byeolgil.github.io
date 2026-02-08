@@ -2120,7 +2120,7 @@
                     <button type="submit" class="estimate-btn">견적 상담 신청하기</button>
                 </form>
                 <!-- Hidden iframe: 폼 제출 시 페이지 이동 없이 처리 -->
-                <iframe name="hidden_iframe" style="display:none;" onload="onIframeLoad()"></iframe>
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
             </div>
         </div>
     </section>
@@ -2810,26 +2810,29 @@
 
         // hidden iframe 로드 완료 시 호출되는 콜백
         // Google Form 제출 완료 후 실행됨
-        window.onIframeLoad = function() {
-            if (submitted) {
-                // 성공 상태 표시
-                submitBtn.textContent = '신청 완료!';
-                submitBtn.style.background = '#28a745';
+        var hiddenIframe = document.getElementById('hidden_iframe');
+        if (hiddenIframe) {
+            hiddenIframe.addEventListener('load', function() {
+                if (submitted) {
+                    // 성공 상태 표시
+                    submitBtn.textContent = '신청 완료!';
+                    submitBtn.style.background = '#28a745';
 
-                // 0.5초 후 완료 알림 및 폼 초기화
-                setTimeout(function() {
-                    alert('견적 상담 신청이 완료되었습니다.\n빠른 시간 내에 연락드리겠습니다.');
-                    // 폼 초기화
-                    form.reset();
-                    // 버튼 원래 상태로 복원
-                    submitBtn.textContent = originalBtnText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.opacity = '1';
-                    submitBtn.style.background = '';
-                    submitted = false;
-                }, 500);
-            }
-        };
+                    // 0.5초 후 완료 알림 및 폼 초기화
+                    setTimeout(function() {
+                        alert('견적 상담 신청이 완료되었습니다.\n빠른 시간 내에 연락드리겠습니다.');
+                        // 폼 초기화
+                        form.reset();
+                        // 버튼 원래 상태로 복원
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = '1';
+                        submitBtn.style.background = '';
+                        submitted = false;
+                    }, 500);
+                }
+            });
+        }
 
         // ========================================
         // 개인정보 동의 모달 제어
