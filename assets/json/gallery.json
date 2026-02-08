@@ -13,21 +13,19 @@
         { "src": "https://github.com/user-attachments/assets/92ed9820-0128-42f0-8795-d48724d95fd0"
           , "alt": "" }
       ]
-    },
+    }
 
-    {
-      "src": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=400&h=500&fit=crop",
-      "alt": "흰 국화 장식",
+    ,{
+      "src": "https://github.com/user-attachments/assets/27d42561-f3b4-4700-be17-b232ce156f0c",
+      "alt": "더좋은요양병원 장례식장",
       "details": [
-        { "src": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1200&h=800&fit=crop", "alt": "흰 국화 장식 - 전체" },
-        { "src": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1200&h=800&fit=crop", "alt": "흰 국화 장식 - 클로즈업" }
+        { "src": "https://github.com/user-attachments/assets/27d42561-f3b4-4700-be17-b232ce156f0c", "alt": "" }
       ]
-    },
+    }
 
 
 
-
-    {
+    ,{
       "src": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400&h=500&fit=crop",
       "alt": "자연 속 추모",
       "details": [
@@ -36,6 +34,8 @@
         { "src": "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=1200&h=800&fit=crop", "alt": "자연 속 추모 - 평화" }
       ]
     }
+
+    
 
   ]
 }
