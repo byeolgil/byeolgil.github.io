@@ -2620,7 +2620,7 @@
 
     <script>
         (function () {
-            fetch('assets/json/stats.json?date=' + new Date().toISOString().slice(0, 10))
+			fetch('./assets/json/stats.json?t=' + Date.now())
                 .then(function (res) { return res.json(); })
                 .then(function (data) {
                     document.getElementById('stats-consultation').innerHTML =
