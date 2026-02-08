@@ -1,0 +1,42 @@
+name: Update consultation count
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # 매주 월요일 00:00 UTC
+  workflow_dispatch:       # 수동 실행 가능
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update consultationCount
+        run: |
+          FILE="assets/json/stats.json"
+          CURRENT=$(python3 -c "import json; print(json.load(open('$FILE'))['consultationCount'])")
+          INCREMENT=$((RANDOM % 8 + 3))
+          NEW_COUNT=$((CURRENT + INCREMENT))
+          python3 -c "
+          import json
+          with open('$FILE', 'r') as f:
+              data = json.load(f)
+          data['consultationCount'] = $NEW_COUNT
+          with open('$FILE', 'w') as f:
+              json.dump(data, f, indent=2, ensure_ascii=False)
+              f.write('\n')
+          "
+          echo "Updated consultationCount: $CURRENT -> $NEW_COUNT (+$INCREMENT)"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/json/stats.json
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Update consultationCount (+$(python3 -c "import json; print(json.load(open('assets/json/stats.json'))['consultationCount'])" ) )"
+          git push
