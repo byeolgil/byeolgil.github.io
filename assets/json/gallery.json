@@ -71,14 +71,7 @@
         { "src": "https://images.unsplash.com/photo-1444930694458-01babf71870c?w=1200&h=800&fit=crop", "alt": "자연 속 추모 - 숲" },
         { "src": "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=1200&h=800&fit=crop", "alt": "자연 속 추모 - 평화" }
       ]
-    },
-    {
-      "src": "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=400&h=500&fit=crop",
-      "alt": "고요한 추모 공간",
-      "details": [
-        { "src": "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=1200&h=800&fit=crop", "alt": "고요한 추모 공간 - 전체" },
-        { "src": "https://images.unsplash.com/photo-1502977249166-824b3a8a4d6d?w=1200&h=800&fit=crop", "alt": "고요한 추모 공간 - 풍경" }
-      ]
     }
+
   ]
 }
