@@ -1573,7 +1573,12 @@
                 margin: 0 10px;
             }
 
-            .promise-grid,
+            .promise-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                margin: 0 10px;
+            }
+
             .reviews-slider-container {
                 margin: 0 10px;
             }
@@ -1747,6 +1752,13 @@
             .service-icon {
                 width: 70px;
                 height: 70px;
+            }
+
+            /* 모바일 약속 그리드 */
+            .promise-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin: 0;
             }
 
             /* 모바일 상품 카드 */
@@ -2617,7 +2629,7 @@
                 })
                 .then(function(data) {
                     console.log('JSON 로드 성공! 이미지 개수:', data.images.length);
-                    console.log('이미지 목록:', data.images.map(function(img) { return img.alt; }));
+                    //console.log('이미지 목록:', data.images.map(function(img) { return img.alt; }));
                     renderGallery(data);
                 })
                 .catch(function(error) {
