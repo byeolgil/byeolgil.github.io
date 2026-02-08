@@ -1158,6 +1158,84 @@
         }
 
         /* ========================================
+           통계 섹션 스타일
+           - 누적상담건수, 고객만족도 표시
+           - 네이비 배경 위 카운터 스타일
+           ======================================== */
+        .stats-section {
+            padding: 70px 20px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .stats-item {
+            flex: 1;
+            max-width: 350px;
+        }
+
+        .stats-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .stats-number .stats-plus {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+        }
+
+        .stats-label {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .stats-divider {
+            width: 1px;
+            height: 80px;
+            background: rgba(255,255,255,0.25);
+        }
+
+        @media (max-width: 768px) {
+            .stats-section {
+                padding: 50px 15px;
+            }
+
+            .stats-container {
+                gap: 30px;
+            }
+
+            .stats-number {
+                font-size: 2.5rem;
+            }
+
+            .stats-number .stats-plus {
+                font-size: 1.8rem;
+            }
+
+            .stats-label {
+                font-size: 1rem;
+            }
+
+            .stats-divider {
+                height: 60px;
+            }
+        }
+
+        /* ========================================
            후기 섹션 스타일
            - 고객 후기 3개를 3열 그리드로 표시
            - 평점 요약 (4.9점, 별점, 후기 수)
@@ -1518,6 +1596,7 @@
         .services-section,
         .products-section,
         .promise-section,
+        .stats-section,
         .reviews-section,
         .contact-section,
         footer {
@@ -1626,6 +1705,7 @@
             .services-section,
             .products-section,
             .promise-section,
+            .stats-section,
             .reviews-section,
             .contact-section {
                 padding: 50px 15px;
@@ -2516,6 +2596,37 @@
                     console.error('JSON 로드 실패:', error);
                     console.warn('fallback 데이터 사용 (이미지 개수:', fallbackData.images.length, ')');
                     renderGallery(fallbackData);
+                });
+        })();
+    </script>
+
+    <!-- ============================================================
+         통계 섹션 (Stats Section)
+         - 누적상담건수, 고객만족도 표시
+         ============================================================ -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stats-item">
+                <div class="stats-number" id="stats-consultation">714<span class="stats-plus">건+</span></div>
+                <div class="stats-label">누적 상담 건수</div>
+            </div>
+            <div class="stats-divider"></div>
+            <div class="stats-item">
+                <div class="stats-number" id="stats-satisfaction">99<span class="stats-plus">%</span></div>
+                <div class="stats-label">고객 만족도</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            fetch('assets/json/stats.json?date=' + new Date().toISOString().slice(0, 10))
+                .then(function (res) { return res.json(); })
+                .then(function (data) {
+                    document.getElementById('stats-consultation').innerHTML =
+                        data.consultationCount + '<span class="stats-plus">건+</span>';
+                    document.getElementById('stats-satisfaction').innerHTML =
+                        data.satisfactionRate + '<span class="stats-plus">%</span>';
                 });
         })();
     </script>
