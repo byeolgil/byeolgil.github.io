@@ -1567,7 +1567,12 @@
                 height: 300px;
             }
 
-            .services-grid,
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                margin: 0 10px;
+            }
+
             .promise-grid,
             .reviews-slider-container {
                 margin: 0 10px;
@@ -1729,13 +1734,19 @@
             }
 
             /* 모바일 서비스 카드 */
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                margin: 0;
+            }
+
             .service-card {
-                padding: 30px 20px;
+                padding: 25px 15px;
             }
 
             .service-icon {
-                width: 80px;
-                height: 80px;
+                width: 70px;
+                height: 70px;
             }
 
             /* 모바일 상품 카드 */
