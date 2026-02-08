@@ -2478,7 +2478,8 @@
                 track.offsetHeight; // 리플로우 강제
                 track.style.animation = 'slideGallery 25s linear infinite';
 
-                // 카드 클릭 이벤트 추가 (이벤트 위임 사용)
+                // 카드 클릭 이벤트 추가 (이벤트 위임 사용) - 주석처리
+                /*
                 track.onclick = function(e) {
                     var card = e.target.closest('.gallery-card');
                     if (card) {
@@ -2491,6 +2492,7 @@
                         return false;
                     }
                 };
+                */
             }
 
             // JSON 파일에서 데이터 로드 시도 (캐시 방지)
