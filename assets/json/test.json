@@ -1,0 +1,11 @@
+{
+  "cols" : [
+              {"id":""   ,"label":"Topping"    ,"pattern":""   ,"type":"string"}             
+             ,{"id":""   ,"label":"Slices"     ,"pattern":""   ,"type":"number"}
+            ]
+ ,"rows":[
+              {"c":[{"v":"준비"  ,"f":null}   ,{"v":3   ,"f":null}]}
+             ,{"c":[{"v":"진행"     ,"f":null}   ,{"v":1   ,"f":null}]}             
+             ,{"c":[{"v":"완료"     ,"f":null}   ,{"v":2   ,"f":null}]}                        
+          ]
+}
