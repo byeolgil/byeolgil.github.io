@@ -26,13 +26,11 @@
 
 
     ,{
-      "src": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400&h=500&fit=crop",
-      "alt": "자연 속 추모",
+      "src": "https://github.com/user-attachments/assets/d6cf3f55-78df-4d3e-94a7-3c1a15a193aa",
+      "alt": "일산복음 장례식장",
       "details": [
-        { "src": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1200&h=800&fit=crop", "alt": "자연 속 추모 - 전경" },
-        { "src": "https://images.unsplash.com/photo-1444930694458-01babf71870c?w=1200&h=800&fit=crop", "alt": "자연 속 추모 - 숲" },
-        { "src": "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=1200&h=800&fit=crop", "alt": "자연 속 추모 - 평화" }
-      ]
+        { "src": "https://github.com/user-attachments/assets/d6cf3f55-78df-4d3e-94a7-3c1a15a193aa", "alt": "" }
+       
     }
 
     
