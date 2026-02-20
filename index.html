@@ -17,19 +17,56 @@
          - 측정 ID: G-9162F6Z0L5
          ======================================== -->
     <!-- ========================================
-         배포 버전 체크
+         배포 버전 체크 (강제 업데이트)
          - GitHub Actions 배포 시 {{TIMESTAMP}}를 실제 시간으로 치환
-         - 버전이 변경되면 브라우저 캐시를 무시하고 새로고침
+         - 접속 시 서버에서 version.txt를 확인하여 새 버전이면 강제 새로고침
          ======================================== -->
     <script>
         (function() {
-            const DEPLOY_TIME = '{{TIMESTAMP}}';
-            const storedVersion = localStorage.getItem('app_version');
+            var DEPLOY_TIME = '{{TIMESTAMP}}';
+            var KEY = 'app_version';
 
-            if (storedVersion !== DEPLOY_TIME) {
-                localStorage.setItem('app_version', DEPLOY_TIME);
-                location.reload(true);
+            // CI/CD가 타임스탬프를 주입하지 않은 경우 스킵
+            if (DEPLOY_TIME.indexOf('{') !== -1) return;
+
+            // 강제 새로고침으로 도착한 경우 URL 정리 후 중단
+            if (window.location.search.indexOf('_v=') !== -1) {
+                localStorage.setItem(KEY, DEPLOY_TIME);
+                history.replaceState(null, '', window.location.pathname + window.location.hash);
+                return;
             }
+
+            // 서버에서 최신 버전 확인 (캐시 완전 무시)
+            fetch('version.txt?t=' + Date.now(), { cache: 'no-store' })
+                .then(function(r) {
+                    if (!r.ok) throw new Error('no version.txt');
+                    return r.text();
+                })
+                .then(function(v) {
+                    v = v.trim();
+                    if (v && v !== DEPLOY_TIME) {
+                        // 새 버전 발견 → 캐시 우회하여 강제 새로고침
+                        localStorage.setItem(KEY, v);
+                        window.location.replace(
+                            window.location.pathname + '?_v=' + v + window.location.hash
+                        );
+                    }
+                })
+                .catch(function() {
+                    // version.txt 실패 시 index.html 직접 확인 (fallback)
+                    fetch(window.location.pathname || '/', { cache: 'no-store' })
+                        .then(function(r) { return r.text(); })
+                        .then(function(html) {
+                            var match = html.match(/DEPLOY_TIME\s*=\s*'(\d+)'/);
+                            if (match && match[1] !== DEPLOY_TIME) {
+                                localStorage.setItem(KEY, match[1]);
+                                window.location.replace(
+                                    window.location.pathname + '?_v=' + match[1] + window.location.hash
+                                );
+                            }
+                        })
+                        .catch(function() {});
+                });
         })();
     </script>
 
@@ -524,6 +561,26 @@
 
         .logo .logo-text .highlight {
             color: var(--secondary-color);
+        }
+
+        .header-phone {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            padding: 7px 18px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .header-phone:hover {
+            background: var(--primary-color);
+            color: white;
         }
 
         nav ul {
@@ -1464,6 +1521,61 @@
         }
 
         /* ========================================
+           SNS 섹션 스타일
+           - 푸터 바로 위 소셜 미디어 링크
+           ======================================== */
+        .sns-section {
+            background: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .sns-section .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .sns-section .section-subtitle {
+            margin-bottom: 24px;
+        }
+
+        .sns-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .sns-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 12px 28px;
+            border-radius: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .sns-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .sns-link-naver {
+            background: #03C75A;
+        }
+
+        .sns-link-naver:hover {
+            background: #02b351;
+        }
+
+        .sns-link svg {
+            flex-shrink: 0;
+        }
+
+        /* ========================================
            푸터 스타일
            - 회사 정보, 서비스 링크, 고객지원 링크
            - 3열 그리드 레이아웃
@@ -1702,6 +1814,12 @@
 
             .logo {
                 font-size: 1.3rem;
+            }
+
+            .header-phone {
+                font-size: 0.8rem;
+                padding: 5px 12px;
+                border-width: 1.5px;
             }
 
             .header-cta {
@@ -2090,6 +2208,11 @@
         <div class="header-container">
             <!-- 로고 영역: 이미지 + 텍스트 -->
             <a href="#" class="logo" aria-label="별길상조 홈"><img src="images/6.png" alt="별길상조 로고" style="height: 50px; margin-right: 12px;"><span class="logo-text"><span class="highlight">별</span>길상조</span></a>
+
+            <!-- 전화번호 -->
+            <a href="tel:1844-2241" class="header-phone" aria-label="전화 상담">
+                📞 1844-2241
+            </a>
 
             <!-- 메인 네비게이션: 각 섹션 앵커 링크 -->
             <nav role="navigation" aria-label="메인 메뉴">
@@ -2830,6 +2953,22 @@
     </section>
 
     </main>
+
+    <!-- ============================================================
+         SNS 섹션
+         - 네이버 블로그 등 소셜 미디어 링크
+         ============================================================ -->
+    <section class="sns-section" id="sns">
+        <h2 class="section-title">SNS</h2>
+        <p class="section-subtitle">별길상조의 소식을 만나보세요</p>
+        <div class="sns-links">
+            <a href="https://m.blog.naver.com/ohmygod210?noTrackingCode=true&proxyReferer=&tab=1" class="sns-link sns-link-naver" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그">
+                <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M13.56 10.7L6.15 0H0v20h6.44V9.3L13.85 20H20V0h-6.44v10.7z" fill="white"/></svg>
+                네이버 블로그
+            </a>
+        </div>
+    </section>
+
     <!-- ============================================================
          푸터 (Footer)
          - 회사 정보: 상호, 대표, 사업자번호, 주소, 이메일
