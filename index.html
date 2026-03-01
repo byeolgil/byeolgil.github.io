@@ -1133,6 +1133,9 @@
             .product-grid {
                 grid-template-columns: 1fr; /* Single column on smaller screens */
             }
+            .product-detail-table {
+                min-width: 0;
+            }
         }
 
         .product-card {
@@ -1326,8 +1329,10 @@
             }
 
             .product-card {
-                padding: 20px 14px;
+                padding: 20px 12px;
                 border-radius: 14px;
+                overflow: hidden;
+                min-width: 0;
             }
 
             .product-title {
@@ -1336,20 +1341,42 @@
 
             .product-table-wrap {
                 border-radius: 8px;
+                margin-left: -12px;
+                margin-right: -12px;
+                border-left: none;
+                border-right: none;
+                border-radius: 0;
             }
 
             .product-detail-table {
-                font-size: 0.78rem;
-                min-width: 420px;
+                font-size: 0.73rem;
+                min-width: 0;
+                width: 100%;
             }
 
             .product-detail-table thead th {
-                padding: 9px 5px;
-                font-size: 0.75rem;
+                padding: 8px 4px;
+                font-size: 0.7rem;
             }
 
             .product-detail-table tbody td {
-                padding: 7px 5px;
+                padding: 6px 4px;
+                word-break: keep-all;
+            }
+
+            /* 모바일 테이블 열 너비 비율 최적화 */
+            .product-detail-table thead th:nth-child(1),
+            .product-detail-table tbody td:first-child {
+                width: 16%;
+            }
+            .product-detail-table thead th:nth-child(2) {
+                width: 22%;
+            }
+            .product-detail-table thead th:nth-child(3) {
+                width: 38%;
+            }
+            .product-detail-table thead th:nth-child(4) {
+                width: 24%;
             }
 
             .common-notes {
@@ -2792,7 +2819,7 @@
                                 </tr>
                                 <tr>
                                     <td>장의 차량</td>
-                                    <td>리무진 또는 버스 중 택 1</td>
+                                    <td>리무진 또는 버스(왕복150km) 중 택 1</td>
                                     <td>45만 원</td>
                                 </tr>
                                 <tr class="table-subtotal">
@@ -2900,7 +2927,7 @@
                                 </tr>
                                 <tr>
                                     <td>장의 차량</td>
-                                    <td>리무진 또는 버스 중 택 1</td>
+                                    <td>리무진 또는 버스(왕복200km) 중 택 1</td>
                                     <td>45만 원</td>
                                 </tr>
                                 <tr class="table-subtotal">
