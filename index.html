@@ -1026,6 +1026,87 @@
         }
 
         /* ========================================
+           후불제 선택 이유 섹션 스타일
+           - 3가지 이유 카드 (번호 + 제목 + 설명)
+           - 3열 그리드 (모바일: 1열)
+           ======================================== */
+        .reasons-section {
+            padding: 80px 20px;
+            background: linear-gradient(160deg, #0a1628 0%, var(--primary-color) 50%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .reasons-section .section-title {
+            color: white;
+        }
+
+        .reasons-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .reason-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 35px 28px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--secondary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .reason-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--secondary-color);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .reason-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .reason-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .reason-card p strong {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        @media (max-width: 968px) {
+            .reasons-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* ========================================
            상품 안내 섹션 스타일
            - 무빈소장, 일반장 2개 상품 카드
            - 2열 그리드 (모바일: 1열)
@@ -1131,6 +1212,125 @@
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px dashed var(--border-color);
+        }
+
+        .product-notice {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3e0;
+            border-radius: 10px;
+            border-left: 3px solid #ff9800;
+        }
+
+        .product-notice h4 {
+            margin-top: 0 !important;
+            color: #e65100 !important;
+        }
+
+        .product-notice ul {
+            margin-bottom: 0 !important;
+        }
+
+        .product-notice ul li::before {
+            content: '•' !important;
+            color: #ff9800 !important;
+        }
+
+        /* 테이블 감싸는 컨테이너: 모바일 가로 스크롤 */
+        .product-table-wrap {
+            margin-top: 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .product-detail-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 480px;
+        }
+
+        .product-detail-table thead th {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 12px 10px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 0.95rem;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .product-detail-table thead th:last-child {
+            border-right: none;
+        }
+
+        .product-detail-table tbody td {
+            padding: 10px 10px;
+            border-bottom: 1px solid #d5d5d5;
+            color: var(--text-gray);
+            vertical-align: middle;
+        }
+
+        /* 구분 열 (rowspan이 있는 그룹 첫 행의 첫 번째 셀만) */
+        .product-detail-table tbody tr.group-start > td:first-child {
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            background: rgba(26, 54, 93, 0.07);
+            border-right: 2px solid var(--primary-color);
+        }
+
+        /* 세부 품목 열 (그룹 첫 행: 2번째 셀 / 이어지는 행: 1번째 셀) */
+        .product-detail-table tbody tr.group-start > td:nth-child(2),
+        .product-detail-table tbody tr:not(.group-start):not(.table-subtotal):not(.table-highlight) > td:first-child {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* 금액 열 */
+        .product-detail-table tbody td:last-child {
+            text-align: right;
+            font-weight: 600;
+            white-space: nowrap;
+            color: var(--text-dark);
+        }
+
+        /* 구분 그룹 첫 행에 상단 굵은 선 */
+        .product-detail-table tbody tr.group-start td {
+            border-top: 2px solid var(--primary-color);
+        }
+
+        /* 정상 합계 행 */
+        .product-detail-table tbody tr.table-subtotal td {
+            background: #e8eef5;
+            font-weight: 700;
+            color: var(--text-dark);
+            border-top: 2px solid var(--primary-color);
+        }
+
+        /* 상담 회원가 강조 행 */
+        .product-detail-table tbody tr.table-highlight td {
+            background: var(--primary-color);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail-table {
+                font-size: 0.8rem;
+            }
+            .product-detail-table thead th {
+                padding: 10px 6px;
+                font-size: 0.78rem;
+            }
+            .product-detail-table tbody td {
+                padding: 8px 6px;
+            }
         }
 
         .common-notes {
@@ -1767,6 +1967,7 @@
            - contain-intrinsic-size: 레이아웃 시프트 방지
            ======================================== */
         .services-section,
+        .reasons-section,
         .products-section,
         .promise-section,
         .stats-section,
@@ -2456,6 +2657,38 @@
     </section>
 
     <!-- ============================================================
+         후불제 선택 이유 섹션 (Reasons Section)
+         - 별길상조(후불제상조)를 선택해야 하는 3가지 이유
+         - 서비스 안내 → 신뢰 구축 → 상품 안내로의 자연스러운 흐름
+         ============================================================ -->
+    <section class="reasons-section" id="reasons">
+        <div class="reasons-container">
+            <h2 class="section-title" style="text-align: center;">별길상조(후불제상조)를 선택해야 하는 3가지 이유</h2>
+
+            <div class="reasons-grid">
+                <!-- 이유 1: 경제적 안전성 -->
+                <div class="reason-card">
+                    <div class="reason-number">1</div>
+                    <h3>경제적 안전성</h3>
+                    <p>가장 큰 장점은 <strong>'선입금'이 없다</strong>는 점입니다. 폐업이나 부도 걱정 없이, 장례를 모두 마친 뒤에 실제 사용한 서비스에 대해서만 비용을 지불하므로 금전적 손실 위험이 전혀 없습니다.</p>
+                </div>
+                <!-- 이유 2: 거품 없는 실속형 가격 -->
+                <div class="reason-card">
+                    <div class="reason-number">2</div>
+                    <h3>거품 없는 실속형 가격</h3>
+                    <p>매달 납입하는 광고비나 영업 수당이 포함되지 않아, 기존 대형 선불 상조 대비 <strong>약 30~50% 정도 저렴</strong>한 비용으로 동일한 수준의 서비스를 받을 수 있습니다. 불필요한 품목은 과감히 제외하고 꼭 필요한 것만 선택할 수 있어 합리적입니다.</p>
+                </div>
+                <!-- 이유 3: 맞춤형 서비스 제공 -->
+                <div class="reason-card">
+                    <div class="reason-number">3</div>
+                    <h3>맞춤형 서비스 제공</h3>
+                    <p>정해진 패키지에 가족을 맞추는 것이 아니라, 가족의 상황(조문객 수, 종교, 가계 상황 등)에 맞춰 <strong>실시간으로 서비스를 조정</strong>할 수 있습니다. 낭비되는 비품이나 인력을 줄여 유가족의 부담을 최소화합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
          상품 안내 섹션 (Products Section)
          - 무빈소장, 일반장(3일장) 2개 상품 소개
          - 각 상품: 가격, 추천대상, 인력지원, 제공용품, 차량서비스, 혜택
@@ -2465,68 +2698,198 @@
         <div class="products-container">
             <h2 class="section-title" style="text-align: center;">별길상조 상품 안내</h2>
             <p class="section-subtitle" style="text-align: center;">고객님의 상황에 맞는 상품을 선택하세요</p>
+            <p style="text-align: center; max-width: 750px; margin: 20px auto 0; color: var(--text-gray); line-height: 1.8; font-size: 0.95rem;">별길상조는 고객님의 상황에 맞춘 정직한 장례를 약속드립니다. 아래 품목 중 상담 시 필요하지 않은 항목은 자유롭게 차감하여 비용을 조정하실 수 있습니다.</p>
 
             <div class="product-grid">
-                <!-- 상품 1: 무빈소장 -->
+                <!-- 상품 1: 무빈소(맞춤) -->
                 <div class="product-card">
-                    <h3 class="product-title">🌟 [상품 1] 무빈소장</h3>
+                    <h3 class="product-title">🌟 [상품 1] 무빈소(맞춤) 149만원</h3>
+                    <p class="product-description">[별길 무빈소] 맞춤형 장례 상품</p>
                     <p class="product-description">"가족 중심의 간소하고 정중한 마지막 인사"</p>
                     <p>빈소를 차리지 않고 고인을 정성껏 모시는 실속형 상품입니다. 불필요한 절차는 줄이고, 고인에 대한 예우와 추모의 본질에 집중합니다.</p>
-                    <p class="product-price">가격: 85만원</p>
-                    <p class="product-recommendation">추천 대상: 조문객 없이 가족끼리 조용히 이별하고 싶으신 분, 합리적인 비용을 원하시는 분</p>
 
-                    <h4>인력 지원:</h4>
-                    <ul>
-                        <li>국가공인 장례지도사: 전 과정 밀착 케어 (접수부터 발인까지)</li>
-                        <li>전문 염습상례사: 고인을 정성을 다해 모시는 입관식 전담</li>
-                    </ul>
-
-                    <h4>제공 용품:</h4>
-                    <ul>
-                        <li>용품 일체: 수의, 규격 관, 입관용품 포함</li>
-                        <li>유골함: 목함 제공</li>
-                    </ul>
-
-                    <h4>차량 서비스:</h4>
-                    <ul>
-                        <li>앰뷸런스: 관내 무료 이송 (임종지~장례식장)</li>
-                        <li>장의 차량: 리무진(화장장까지)</li>
-                    </ul>
-
-                    <p class="product-benefit">혜택: 별길상조 회원 시 고급 유골함 변경 30% 할인</p>
-
-                    <p class="product-custom-note">맞춤형 선택: 유가족의 종교나 희망하시는 장례 방식에 따라 필요한 부분을 자유롭게 선택하거나 조정 가능합니다.</p>
+                    <div class="product-table-wrap">
+                        <table class="product-detail-table">
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>세부 품목</th>
+                                    <th>상세 내용 및 규격</th>
+                                    <th>금액 (차감 기준)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="group-start">
+                                    <td rowspan="2">인력 서비스</td>
+                                    <td>장례지도사</td>
+                                    <td>3일간 장례 일정 전반 관리</td>
+                                    <td>30만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>염습상례사</td>
+                                    <td>1일 입관 및 염습 진행</td>
+                                    <td>15만 원</td>
+                                </tr>
+                                <tr class="group-start">
+                                    <td rowspan="5">장례 용품</td>
+                                    <td>관</td>
+                                    <td>화장 전용 오동나무 관</td>
+                                    <td>20만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>수의</td>
+                                    <td>화장 전용 수의</td>
+                                    <td>10만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>유골함</td>
+                                    <td>목함 제공</td>
+                                    <td>무료</td>
+                                </tr>
+                                <tr>
+                                    <td>꽃관 장식</td>
+                                    <td>관 내부 생화 장식</td>
+                                    <td>20만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>입관/수시 용품</td>
+                                    <td>관보, 염지, 소독약, 예단 등</td>
+                                    <td>15만 원</td>
+                                </tr>
+                                <tr class="group-start">
+                                    <td rowspan="2">차량 서비스</td>
+                                    <td>앰블런스</td>
+                                    <td>관내 고인 이송</td>
+                                    <td>10만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>장의 차량</td>
+                                    <td>리무진 또는 버스 중 택 1</td>
+                                    <td>45만 원</td>
+                                </tr>
+                                <tr class="table-subtotal">
+                                    <td>정상 합계</td>
+                                    <td></td>
+                                    <td>각 품목별 단가 합산 금액</td>
+                                    <td>165만 원</td>
+                                </tr>
+                                <tr class="table-highlight">
+                                    <td>상담 회원가</td>
+                                    <td></td>
+                                    <td>별길상조 특별 할인 적용</td>
+                                    <td>149만 원</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
-                <!-- 상품 2: 일반장 (3일장) -->
+                <!-- 상품 2: 가족장 (3일장) -->
                 <div class="product-card">
-                    <h3 class="product-title">💐 [상품 2] 일반장 (3일장)</h3>
+                    <h3 class="product-title">💐 [상품 2] 가족장 (3일장) 259만원</h3>
+                    <p class="product-description">[별길 가족장] 맞춤형 장례 안내</p>
                     <p class="product-description">"전통의 예와 격식을 갖춘 품격 있는 작별"</p>
                     <p>빈소를 마련하여 조문객을 맞이하고, 최고의 전문 인력들이 3일 동안 유가족의 곁을 지키며 모든 절차를 완벽하게 보좌합니다.</p>
-                    <p class="product-price">가격: 259만원</p>
-                    <p class="product-recommendation">추천 대상: 빈소를 갖춰 격식 있는 장례를 원하시는 분, 많은 조문객 응대가 필요하신 분</p>
 
-                    <h4>인력 지원:</h4>
-                    <ul>
-                        <li>국가공인 장례지도사: 3일 전 과정 밀착 케어</li>
-                        <li>전문 염습상례사: 격조 높은 입관 서비스 전담</li>
-                        <li>의전 도우미(4명): 빈소 세팅 및 조문객 응대 (각 10시간 기준)</li>
-                    </ul>
-
-                    <h4>제공 용품:</h4>
-                    <ul>
-                        <li>용품 일체: 빈소용품, 수의, 규격 관, 입관용품 완벽 포함</li>
-                        <li>꽃(생화)관장식: 고급 생화 관장식으로 품격 있는 입관</li>
-                        <li>유골함: 도자기 유골함 제공</li>
-                    </ul>
-
-                    <h4>차량 서비스:</h4>
-                    <ul>
-                        <li>앰뷸런스: 관내 무료 이송 (임종지~장례식장)</li>
-                        <li>장의 차량: 리무진 또는 버스(왕복 200km) 중 택 1</li>
-                    </ul>
-
-                    <p class="product-benefit">혜택: 별길상조 회원 시 고급 유골함 변경 30% 할인</p>
+                    <div class="product-table-wrap">
+                        <table class="product-detail-table">
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>세부 품목</th>
+                                    <th>상세 내용 및 규격</th>
+                                    <th>금액 (차감 기준)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="group-start">
+                                    <td rowspan="3">인력 서비스</td>
+                                    <td>장례지도사</td>
+                                    <td>3일간 장례 일정 전반 관리 및 행정 안내</td>
+                                    <td>50만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>염습상례사</td>
+                                    <td>1일 입관 및 전문 염습 진행</td>
+                                    <td>15만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>접객도우미</td>
+                                    <td>장례식장 음식 관리 (1인 10시간)</td>
+                                    <td>48만 원</td>
+                                </tr>
+                                <tr class="group-start">
+                                    <td rowspan="9">장례 용품</td>
+                                    <td>관</td>
+                                    <td>화장 전용 오동나무 관</td>
+                                    <td>20만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>수의</td>
+                                    <td>고급 자수 수의 (화장 전용)</td>
+                                    <td>20만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>유골함</td>
+                                    <td>일반 자기 유골함</td>
+                                    <td>10만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>꽃관 장식</td>
+                                    <td>관 내부 생화 장식</td>
+                                    <td>20만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>입관/수시 용품</td>
+                                    <td>관보, 염지, 소독약, 예단 등</td>
+                                    <td>15만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>빈소 용품</td>
+                                    <td>부의록, 초, 향, 위패 등 일체</td>
+                                    <td>20만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>상복 (남성)</td>
+                                    <td>검정 양복 대여 (3벌)</td>
+                                    <td>15만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>상복 (여성)</td>
+                                    <td>현대식/전통식 여상복 대여 (3벌)</td>
+                                    <td>6만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>상주 용품</td>
+                                    <td>완장, 상장, 리본 등</td>
+                                    <td>무료</td>
+                                </tr>
+                                <tr class="group-start">
+                                    <td rowspan="2">차량 서비스</td>
+                                    <td>앰블런스</td>
+                                    <td>관내 지역 고인 이송</td>
+                                    <td>10만 원</td>
+                                </tr>
+                                <tr>
+                                    <td>장의 차량</td>
+                                    <td>리무진 또는 버스 중 택 1</td>
+                                    <td>45만 원</td>
+                                </tr>
+                                <tr class="table-subtotal">
+                                    <td>정상 합계</td>
+                                    <td></td>
+                                    <td>각 품목별 단가 합산 금액</td>
+                                    <td>294만 원</td>
+                                </tr>
+                                <tr class="table-highlight">
+                                    <td>상담 회원가</td>
+                                    <td></td>
+                                    <td>별길상조 가족 특별 할인 적용</td>
+                                    <td>259만 원</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -2534,7 +2897,7 @@
             <div class="common-notes">
                 <h3 class="notes-title">⚠️ 공통 유의사항</h3>
                 <ul>
-                    <li>차량 거리 초과 시 1km당 2,000원의 추가 비용이 발생합니다.</li>
+                    <li>차량 거리 초과 시 1km당 2,000원의 추가 비용이 발생합니다(리무진 수도권 화장장 편도, 버스 왕복 거리적용)</li>
                     <li>앰뷸런스 이용 시 관외 지역은 추가 비용이 발생합니다.</li>
                     <li>[별길상조 회원 혜택] 고급 유골함으로 변경 시 30% 할인가 제공</li>
                 </ul>
