@@ -1474,6 +1474,40 @@
            - 중앙 정렬된 컨택트 박스
            - 전화 연결 버튼
            ======================================== */
+        /* ========================================
+           네이버 블로그 후기 링크 배너
+           ======================================== */
+        .naver-review-banner {
+            padding: 50px 20px;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .naver-review-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 36px;
+            background: #03C75A;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(3, 199, 90, 0.3);
+        }
+
+        .naver-review-link:hover {
+            background: #02b350;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(3, 199, 90, 0.4);
+        }
+
+        .naver-review-link svg {
+            flex-shrink: 0;
+        }
+
         .contact-section {
             padding: 80px 20px;
             background: var(--background-warm);
@@ -2932,6 +2966,24 @@
                 });
         })();
     </script>
+
+    <!-- ============================================================
+         네이버 블로그 후기 링크 배너
+         ============================================================ -->
+    <div class="naver-review-banner">
+        <p style="margin-bottom: 14px; color: var(--text-gray); font-size: 0.95rem;">더 많은 후기가 궁금하시다면</p>
+        <a href="https://blog.naver.com/PostList.naver?blogId=ohmygod210&from=postList&categoryNo=75"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="naver-review-link"
+           aria-label="네이버 블로그에서 고객 후기 더보기">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#ffffff"/>
+            </svg>
+            네이버 블로그 후기 보기
+            <span style="font-size: 1.2rem;">→</span>
+        </a>
+    </div>
 
     <!-- ============================================================
          연락처 섹션 (Contact Section)
