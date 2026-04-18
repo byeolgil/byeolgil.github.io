@@ -228,8 +228,58 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- 히어로 이미지 preload (LCP 최적화) -->
-    <link rel="preload" as="image" href="images/12.png">
+    <!-- 히어로 이미지 preload (LCP 최적화) — 타임스탬프는 아래 스크립트에서 주입 -->
+    <link rel="preload" as="image" href="images/12.png" id="hero-preload">
+
+    <!-- ========================================
+         이미지 캐시 무효화 (항상 최신 이미지 로드)
+         - images/ 경로의 모든 src에 ?t=<timestamp> 자동 부여
+         - MutationObserver로 DOM 파싱 중 가로채기
+         ======================================== -->
+    <script>
+        (function() {
+            var ts = Date.now();
+            function addTs(url) {
+                if (!url || url.indexOf('images/') === -1) return url;
+                if (url.indexOf('?') !== -1) return url;
+                return url + '?t=' + ts;
+            }
+            // preload 링크 즉시 갱신
+            var pre = document.getElementById('hero-preload');
+            if (pre) pre.href = addTs(pre.getAttribute('href'));
+
+            // DOM 파싱 중 img 노드를 가로채 src 교체
+            var mo = new MutationObserver(function(muts) {
+                muts.forEach(function(m) {
+                    m.addedNodes.forEach(function(n) {
+                        if (n.nodeType !== 1) return;
+                        if (n.tagName === 'IMG') {
+                            var s = n.getAttribute('src');
+                            var ns = addTs(s);
+                            if (s !== ns) n.setAttribute('src', ns);
+                        }
+                        if (n.querySelectorAll) {
+                            n.querySelectorAll('img').forEach(function(img) {
+                                var s = img.getAttribute('src');
+                                var ns = addTs(s);
+                                if (s !== ns) img.setAttribute('src', ns);
+                            });
+                        }
+                    });
+                });
+            });
+            mo.observe(document.documentElement, { childList: true, subtree: true });
+            document.addEventListener('DOMContentLoaded', function() {
+                // 혹시 누락된 이미지 보정
+                document.querySelectorAll('img').forEach(function(img) {
+                    var s = img.getAttribute('src');
+                    var ns = addTs(s);
+                    if (s !== ns) img.setAttribute('src', ns);
+                });
+                mo.disconnect();
+            });
+        })();
+    </script>
 
     <!-- ========================================
          Google Fonts
