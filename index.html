@@ -2952,13 +2952,15 @@
                 title: "장례후기",
                 subtitle: "별길상조와 함께한 소중한 순간들입니다",
                 images: [
-                    { src: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=500&fit=crop", alt: "추모 꽃 장식", details: [{ src: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1200&h=800&fit=crop", alt: "추모 꽃 장식 - 전체" }, { src: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1200&h=800&fit=crop", alt: "추모 꽃 장식 - 세부 1" }, { src: "https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=1200&h=800&fit=crop", alt: "추모 꽃 장식 - 세부 2" }] }
-					, { src: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400&h=500&fit=crop", alt: "자연 속 추모"
-					   , details: [{ src: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1200&h=800&fit=crop", alt: "자연 속 추모 - 전경" }
-								  ,{ src: "https://images.unsplash.com/photo-1444930694458-01babf71870c?w=1200&h=800&fit=crop", alt: "자연 속 추모 - 숲" }] 
-					  }
-								
-				]
+                    { src: "./images/gallery/namyangju_1.jpg", alt: "남양주나눔병원 장례식장", details: [{ src: "./images/gallery/namyangju_1.jpg", alt: "남양주나눔병원 장례식장" }] },
+                    { src: "./images/gallery/thegood_1.jpg", alt: "더좋은요양병원 장례식장", details: [{ src: "./images/gallery/thegood_1.jpg", alt: "더좋은요양병원 장례식장" }] },
+                    { src: "./images/gallery/ilsan_1.jpg", alt: "일산복음 장례식장", details: [{ src: "./images/gallery/ilsan_1.jpg", alt: "일산복음 장례식장" }] },
+                    { src: "./images/gallery/sinchon_1.jpg", alt: "신촌세브란스병원 장례식장", details: [{ src: "./images/gallery/sinchon_1.jpg", alt: "신촌세브란스병원 장례식장" }] },
+                    { src: "./images/gallery/gimpo_1.jpg", alt: "김포쉴낙원 장례식장", details: [{ src: "./images/gallery/gimpo_1.jpg", alt: "김포쉴낙원 장례식장" }] },
+                    { src: "./images/gallery/gangdong_1.jpg", alt: "강동성심병원 장례식장", details: [{ src: "./images/gallery/gangdong_1.jpg", alt: "강동성심병원 장례식장" }] },
+                    { src: "./images/gallery/seoul36_1.jpg", alt: "서울삼육병원 장례식장", details: [{ src: "./images/gallery/seoul36_1.jpg", alt: "서울삼육병원 장례식장" }] },
+                    { src: "./images/gallery/newtown_1.jpg", alt: "뉴타운 장례식장", details: [{ src: "./images/gallery/newtown_1.jpg", alt: "뉴타운 장례식장" }] }
+                ]
             };
 
             // 갤러리 원본 데이터 및 현재 상세 이미지 저장
@@ -3062,7 +3064,7 @@
             function createCards(images) {
                 return images.map(function(img, index) {
                     return '<div class="gallery-card" data-index="' + index + '">' +
-                           '<img src="' + img.src + '" alt="' + img.alt + '" loading="lazy">' +
+                           '<img src="' + img.src + '" alt="' + img.alt + '" loading="lazy" decoding="async" width="280" height="300">' +
                            '<div class="gallery-caption">' + img.alt + '</div></div>';
                 }).join('');
             }

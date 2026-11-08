@@ -3,79 +3,62 @@
   "subtitle": "별길상조와 함께한 소중한 순간들입니다",
   "images": [
     {
-      "src": "https://github.com/user-attachments/assets/26b8994e-e34e-49d7-9c7d-3c6614b46a59",
+      "src": "./images/gallery/namyangju_1.jpg",
       "alt": "남양주나눔병원 장례식장",
       "details": [
-        { "src": "https://github.com/user-attachments/assets/26b8994e-e34e-49d7-9c7d-3c6614b46a59"
-          , "alt": "" },
-        { "src": "https://github.com/user-attachments/assets/c3f1f6a2-a7fd-4842-852b-3f1353843890"
-          , "alt": "" },
-        { "src": "https://github.com/user-attachments/assets/92ed9820-0128-42f0-8795-d48724d95fd0"
-          , "alt": "" }
+        { "src": "./images/gallery/namyangju_1.jpg", "alt": "남양주나눔병원 장례식장 - 전경" },
+        { "src": "./images/gallery/namyangju_2.jpg", "alt": "남양주나눔병원 장례식장 - 빈소" },
+        { "src": "./images/gallery/namyangju_3.jpg", "alt": "남양주나눔병원 장례식장 - 제단" }
       ]
-    }
-
-    ,{
-      "src": "https://github.com/user-attachments/assets/27d42561-f3b4-4700-be17-b232ce156f0c",
+    },
+    {
+      "src": "./images/gallery/thegood_1.jpg",
       "alt": "더좋은요양병원 장례식장",
       "details": [
-        { "src": "https://github.com/user-attachments/assets/27d42561-f3b4-4700-be17-b232ce156f0c", "alt": "" }
+        { "src": "./images/gallery/thegood_1.jpg", "alt": "더좋은요양병원 장례식장" }
       ]
-    }
-
-
-
-    ,{
-      "src": "https://github.com/user-attachments/assets/d6cf3f55-78df-4d3e-94a7-3c1a15a193aa",
+    },
+    {
+      "src": "./images/gallery/ilsan_1.jpg",
       "alt": "일산복음 장례식장",
       "details": [
-        { "src": "https://github.com/user-attachments/assets/d6cf3f55-78df-4d3e-94a7-3c1a15a193aa", "alt": "" }
+        { "src": "./images/gallery/ilsan_1.jpg", "alt": "일산복음 장례식장" }
       ]
-    }
-
-    ,{
-      "src": "https://github.com/user-attachments/assets/d9090491-78d9-493e-90d4-45279846ae7d",
+    },
+    {
+      "src": "./images/gallery/sinchon_1.jpg",
       "alt": "신촌세브란스병원 장례식장",
       "details": [
-        { "src": "https://github.com/user-attachments/assets/d9090491-78d9-493e-90d4-45279846ae7d", "alt": "" }
+        { "src": "./images/gallery/sinchon_1.jpg", "alt": "신촌세브란스병원 장례식장" }
       ]
-    }
-    
-    ,{
-      "src": "https://github.com/user-attachments/assets/ab188a88-c221-495e-afa8-f366445bd558",
+    },
+    {
+      "src": "./images/gallery/gimpo_1.jpg",
       "alt": "김포쉴낙원 장례식장",
       "details": [
-        { "src": "https://github.com/user-attachments/assets/ab188a88-c221-495e-afa8-f366445bd558", "alt": "" }
+        { "src": "./images/gallery/gimpo_1.jpg", "alt": "김포쉴낙원 장례식장" }
       ]
-    }
-     ,{
-      "src": "https://github.com/user-attachments/assets/bcbde2be-b471-42af-b650-70f81a41e72e",
+    },
+    {
+      "src": "./images/gallery/gangdong_1.jpg",
       "alt": "강동성심병원 장례식장",
       "details": [
-        { "src": "https://github.com/user-attachments/assets/bcbde2be-b471-42af-b650-70f81a41e72e", "alt": "" }
+        { "src": "./images/gallery/gangdong_1.jpg", "alt": "강동성심병원 장례식장" }
       ]
-    } 
-    ,{
-      "src": "https://github.com/user-attachments/assets/edfc72c7-1433-45e9-b668-76b26409cd8b",
+    },
+    {
+      "src": "./images/gallery/seoul36_1.jpg",
       "alt": "서울삼육병원 장례식장",
       "details": [
-        { "src": "https://github.com/user-attachments/assets/edfc72c7-1433-45e9-b668-76b26409cd8b", "alt": "" }
+        { "src": "./images/gallery/seoul36_1.jpg", "alt": "서울삼육병원 장례식장" }
       ]
-    } 
- ,{
-      "src": "https://github.com/user-attachments/assets/79ec4118-3341-4262-aee4-c12fe2fc85f7",
+    },
+    {
+      "src": "./images/gallery/newtown_1.jpg",
       "alt": "뉴타운 장례식장",
       "details": [
-        { "src": "https://github.com/user-attachments/assets/79ec4118-3341-4262-aee4-c12fe2fc85f7", "alt": "" }
+        { "src": "./images/gallery/newtown_1.jpg", "alt": "뉴타운 장례식장" }
       ]
-    } 
-
-
-
-
-
-
-
-    
-
-]}
+    }
+  ]
+}
