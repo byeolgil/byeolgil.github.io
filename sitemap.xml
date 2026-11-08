@@ -15,9 +15,17 @@
     <!-- 메인 페이지 (홈) -->
     <url>
         <loc>https://www.byeolgil.co.kr/</loc>
-        <lastmod>2025-12-23</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+    </url>
+    
+    <!-- 무빈소 장례 완벽 가이드 페이지 -->
+    <url>
+        <loc>https://www.byeolgil.co.kr/no-binso.html</loc>
+        <lastmod>2026-11-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
     
     <!-- 섹션별 앵커 링크 (선택사항 - 검색엔진이 섹션 인식에 도움) -->
