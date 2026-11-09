@@ -1196,6 +1196,296 @@
             margin: 0 auto;
         }
 
+/* 2-Way 가이드 카드 */
+        .product-type-guide {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 35px 0 25px;
+        }
+
+        .guide-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 18px;
+            padding: 30px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .guide-card:hover, .guide-card.active {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 128, 0.1);
+        }
+
+        .guide-card.active {
+            background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+            border-color: var(--primary-color);
+        }
+
+        .guide-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin: 0 auto 12px;
+        }
+
+        .guide-badge.package-badge {
+            background: #d97706;
+        }
+
+        .guide-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .guide-card h3 {
+            font-size: 1.35rem;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .guide-desc {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .guide-points {
+            list-style: none;
+            padding: 14px 18px;
+            margin: 0 0 20px 0;
+            text-align: left;
+            background: var(--background-warm);
+            border-radius: 12px;
+            font-size: 0.92rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            flex-grow: 1;
+        }
+
+        .guide-points li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 4px;
+        }
+
+        .guide-points li::before {
+            content: "✔";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .guide-tab-btn {
+            display: inline-block;
+            width: 100%;
+            background: var(--background-warm);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .guide-card.active .guide-tab-btn, .guide-tab-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* 탭 네비게이션 */
+        .product-tabs-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 35px 0 25px;
+        }
+
+        .product-tabs {
+            display: inline-flex;
+            background: #eef2f7;
+            padding: 6px;
+            border-radius: 35px;
+            gap: 8px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.06);
+        }
+
+        .product-tab-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .product-tab-btn.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 128, 0.25);
+        }
+
+        /* 탭 콘텐츠 */
+        .product-tab-content {
+            display: none;
+            animation: fadeInTab 0.35s ease;
+        }
+
+        .product-tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeInTab {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 맞춤형 더하기/빼기 안내 박스 */
+        .custom-add-remove-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 18px 0;
+            background: white;
+            border-radius: 12px;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+        .custom-box-col h5 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .col-add h5 { color: #0284c7; }
+        .col-remove h5 { color: #dc2626; }
+
+        .custom-box-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.84rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .custom-box-col ul li {
+            position: relative;
+            padding-left: 14px;
+            margin-bottom: 4px;
+        }
+
+        .col-add ul li::before {
+            content: "+";
+            color: #0284c7;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .col-remove ul li::before {
+            content: "−";
+            color: #dc2626;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* 패키지 섹션 배너 및 카드 */
+        .package-banner {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            color: white;
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.15);
+        }
+
+        .package-banner h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fbbf24;
+        }
+
+        .package-banner p {
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: #e2e8f0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 정산 영수증 카드 */
+        .receipt-card {
+            background: white;
+            border: 2px dashed #94a3b8;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 25px;
+            background-color: #fafbfc;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .receipt-header {
+            text-align: center;
+            padding-bottom: 14px;
+            border-bottom: 1px dashed #cbd5e1;
+            margin-bottom: 16px;
+        }
+
+        .receipt-header h4 {
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .receipt-row.deduction {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .receipt-total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 14px;
+            margin-top: 10px;
+            border-top: 2px solid var(--primary-color);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
         .product-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr); /* Two columns for products */
@@ -1456,6 +1746,30 @@
                 width: 24%;
             }
 
+.product-type-guide {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .product-tabs {
+                width: 100%;
+                flex-direction: column;
+                border-radius: 20px;
+            }
+            .product-tab-btn {
+                padding: 10px 16px;
+                font-size: 0.92rem;
+                text-align: center;
+            }
+            .custom-add-remove-box {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .package-banner {
+                padding: 22px 16px;
+            }
+            .package-banner h3 {
+                font-size: 1.2rem;
+            }
             .common-notes {
                 padding: 20px 15px;
             }
@@ -2655,230 +2969,492 @@
 
     <!-- ============================================================
          상품 안내 섹션 (Products Section)
-         - 무빈소장, 일반장(3일장) 2개 상품 소개
-         - 각 상품: 가격, 추천대상, 인력지원, 제공용품, 차량서비스, 혜택
-         - 하단: 공통 유의사항
+         - 1. 맞춤형 상품 (무빈소맞춤, 일반장맞춤 - 더하기/빼기 DIY)
+         - 2. 기본 패키지 상품 (알찬 올인원 구성 + 미사용 품목 100% 공제 서비스)
          ============================================================ -->
     <section class="products-section" id="products">
         <div class="products-container">
-            <h2 class="section-title" style="text-align: center;">별길상조 상품 안내</h2>
-            <p class="section-subtitle" style="text-align: center;">고객님의 상황에 맞는 상품을 선택하세요</p>
-            <p style="text-align: center; max-width: 750px; margin: 20px auto 0; color: var(--text-gray); line-height: 1.8; font-size: 0.95rem;">별길상조는 고객님의 상황에 맞춘 정직한 장례를 약속드립니다. 아래 품목 중 상담 시 필요하지 않은 항목은 자유롭게 차감하여 비용을 조정하실 수 있습니다.</p>
+            <h2 class="section-title" style="text-align: center;">별길상조 장례상품 안내</h2>
+            <p class="section-subtitle" style="text-align: center;">필요한 품목을 더하고 빼는 [맞춤형 상품]과 알찬 구성에 미사용 품목을 돌려드리는 [기본 패키지]</p>
+            <p style="text-align: center; max-width: 800px; margin: 15px auto 0; color: var(--text-gray); line-height: 1.8; font-size: 0.95rem; word-break: keep-all;">
+                별길상조는 불필요한 거품과 강매를 없애고, 유가족의 상황과 뜻에 100% 맞춘 정직한 장례를 약속드립니다.
+            </p>
 
-            <!-- 무빈소장 vs 일반장 비교 인포그래픽 -->
-            <div style="text-align: center; margin: 40px auto 50px; max-width: 900px;">
-                <img src="images/21.png" alt="무빈소장례 vs 일반 장례(3일장) 상세 비교" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" loading="lazy" decoding="async">
+            <!-- 2-Way 가이드 카드 (상품 유형 선택) -->
+            <div class="product-type-guide">
+                <div class="guide-card active" id="guide-card-custom" onclick="switchProductTab('custom')">
+                    <div class="guide-badge">🛠️ 실속형 맞춤 장례</div>
+                    <div class="guide-icon">⚖️</div>
+                    <h3>1. 맞춤형 상품</h3>
+                    <p class="guide-desc"><strong>무빈소맞춤</strong> & <strong>일반장맞춤</strong></p>
+                    <ul class="guide-points">
+                        <li>필요한 품목은 <strong>자유롭게 더하고(+)</strong></li>
+                        <li>필요없는 품목은 <strong>알뜰하게 빼는(-)</strong> 실속형</li>
+                        <li>가족 상황·조문 규모에 맞춘 투명 견적</li>
+                    </ul>
+                    <button type="button" class="guide-tab-btn" id="btn-guide-custom">맞춤형 상품 둘러보기 ↓</button>
+                </div>
+                <div class="guide-card" id="guide-card-package" onclick="switchProductTab('package')">
+                    <div class="guide-badge package-badge">🎁 안심 올인원 + 환불 보장</div>
+                    <div class="guide-icon">🛡️</div>
+                    <h3>2. 기본 패키지 상품</h3>
+                    <p class="guide-desc"><strong>알찬 풀구성</strong> & <strong>공제 서비스</strong></p>
+                    <ul class="guide-points">
+                        <li>처음엔 전문가가 <strong>빈틈없이 풀세트</strong>로 든든하게</li>
+                        <li><strong>사용하지 않은 품목은 100% 차감(공제)</strong> 환불</li>
+                        <li>정산서 기준 마지막 1원까지 투명하게 공제</li>
+                    </ul>
+                    <button type="button" class="guide-tab-btn" id="btn-guide-package">기본 패키지 & 공제표 보기 ↓</button>
+                </div>
             </div>
 
-            <div class="product-grid">
-                <!-- 상품 1: 무빈소(맞춤) -->
-                <div class="product-card">
-                    <h3 class="product-title">🌟 [상품 1] 무빈소(맞춤) 149만원</h3>
-                    <p class="product-description">[별길 무빈소] 맞춤형 장례 상품</p>
-                    <p class="product-description">"가족 중심의 간소하고 정중한 마지막 인사"</p>
-                    <p>빈소를 차리지 않고 고인을 정성껏 모시는 실속형 상품입니다. 불필요한 절차는 줄이고, 고인에 대한 예우와 추모의 본질에 집중합니다.</p>
-                    <div style="margin: 15px 0 20px;">
-                        <a href="no-binso.html" style="display: inline-block; background: var(--primary-color); color: white; padding: 10px 22px; border-radius: 25px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: background 0.3s; box-shadow: 0 4px 12px rgba(0,0,128,0.2);">
-                            📖 무빈소 3일 절차·실제 총비용 완벽 가이드 보기 →
-                        </a>
-                    </div>
+            <!-- 탭 전환 버튼 바 -->
+            <div class="product-tabs-wrapper">
+                <div class="product-tabs">
+                    <button type="button" class="product-tab-btn active" id="tab-btn-custom" onclick="switchProductTab('custom')">
+                        🛠️ 1. 맞춤형 상품 (무빈소맞춤 · 일반장맞춤)
+                    </button>
+                    <button type="button" class="product-tab-btn" id="tab-btn-package" onclick="switchProductTab('package')">
+                        🎁 2. 기본 패키지 (알찬구성 · 미사용 공제제)
+                    </button>
+                </div>
+            </div>
 
-                    <div class="product-table-wrap">
-                        <table class="product-detail-table">
-                            <thead>
-                                <tr>
-                                    <th>구분</th>
-                                    <th>세부 품목</th>
-                                    <th>상세 내용 및 규격</th>
-                                    <th>금액 (차감 기준)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="group-start">
-                                    <td rowspan="2">인력 서비스</td>
-                                    <td>장례지도사</td>
-                                    <td>3일간 장례 일정 전반 관리</td>
-                                    <td>30만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>염습상례사</td>
-                                    <td>1일 입관 및 염습 진행</td>
-                                    <td>15만 원</td>
-                                </tr>
-                                <tr class="group-start">
-                                    <td rowspan="5">장례 용품</td>
-                                    <td>관</td>
-                                    <td>화장 전용 오동나무 관</td>
-                                    <td>20만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>수의</td>
-                                    <td>화장 전용 수의</td>
-                                    <td>10만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>유골함</td>
-                                    <td>목함 제공</td>
-                                    <td>무료</td>
-                                </tr>
-                                <tr>
-                                    <td>꽃관 장식</td>
-                                    <td>관 내부 생화 장식</td>
-                                    <td>20만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>입관/수시 용품</td>
-                                    <td>관보, 염지, 소독약, 예단 등</td>
-                                    <td>15만 원</td>
-                                </tr>
-                                <tr class="group-start">
-                                    <td rowspan="2">차량 서비스</td>
-                                    <td>앰뷸런스</td>
-                                    <td>관내 고인 이송</td>
-                                    <td>10만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>장의 차량</td>
-                                    <td>리무진 또는 버스(왕복150km) 중 택 1</td>
-                                    <td>45만 원</td>
-                                </tr>
-                                <tr class="table-subtotal">
-                                    <td>정상 합계</td>
-                                    <td></td>
-                                    <td>각 품목별 단가 합산 금액</td>
-                                    <td>165만 원</td>
-                                </tr>
-                                <tr class="table-highlight">
-                                    <td>상담 회원가</td>
-                                    <td></td>
-                                    <td>별길상조 특별 할인 적용</td>
-                                    <td>149만 원</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <!-- ============================================================
+                 [탭 1] 맞춤형 상품 (Customized Products)
+                 ============================================================ -->
+            <div class="product-tab-content active" id="tab-content-custom">
+                <div style="background: #f0f7ff; border: 1px solid #bae6fd; border-radius: 14px; padding: 18px 22px; margin-bottom: 30px; text-align: center;">
+                    <p style="margin: 0; color: #0369a1; font-weight: 600; font-size: 0.98rem; word-break: keep-all;">
+                        💡 <strong>맞춤형 장례란?</strong> 정해진 패키지에 가족을 억지로 맞추지 않습니다. 기본 예우 품목을 바탕으로 가족의 상황에 맞춰 품목을 <strong>더하고(+) 빼서(-)</strong> 가장 합리적인 견적을 완성합니다.
+                    </p>
                 </div>
 
-                <!-- 상품 2: 가족장 (3일장) -->
-                <div class="product-card">
-                    <h3 class="product-title">💐 [상품 2] 가족장 (3일장) 259만원</h3>
-                    <p class="product-description">[별길 가족장] 맞춤형 장례 안내</p>
-                    <p class="product-description">"전통의 예와 격식을 갖춘 품격 있는 작별"</p>
-                    <p>빈소를 마련하여 조문객을 맞이하고, 최고의 전문 인력들이 3일 동안 유가족의 곁을 지키며 모든 절차를 완벽하게 보좌합니다.</p>
+                <!-- 무빈소장 vs 일반장 비교 인포그래픽 -->
+                <div style="text-align: center; margin: 20px auto 40px; max-width: 900px;">
+                    <img src="images/21.png" alt="무빈소장례 vs 일반 장례(3일장) 상세 비교" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" loading="lazy" decoding="async">
+                </div>
 
-                    <div class="product-table-wrap">
-                        <table class="product-detail-table">
-                            <thead>
-                                <tr>
-                                    <th>구분</th>
-                                    <th>세부 품목</th>
-                                    <th>상세 내용 및 규격</th>
-                                    <th>금액 (차감 기준)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="group-start">
-                                    <td rowspan="3">인력 서비스</td>
-                                    <td>장례지도사</td>
-                                    <td>3일간 장례 일정 전반 관리 및 행정 안내</td>
-                                    <td>50만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>염습상례사</td>
-                                    <td>1일 입관 및 전문 염습 진행</td>
-                                    <td>15만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>접객도우미</td>
-                                    <td>장례식장 음식 관리 (1인 10시간)</td>
-                                    <td>48만 원</td>
-                                </tr>
-                                <tr class="group-start">
-                                    <td rowspan="9">장례 용품</td>
-                                    <td>관</td>
-                                    <td>화장 전용 오동나무 관</td>
-                                    <td>20만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>수의</td>
-                                    <td>고급 자수 수의 (화장 전용)</td>
-                                    <td>20만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>유골함</td>
-                                    <td>일반 자기 유골함</td>
-                                    <td>10만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>꽃관 장식</td>
-                                    <td>관 내부 생화 장식</td>
-                                    <td>20만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>입관/수시 용품</td>
-                                    <td>관보, 염지, 소독약, 예단 등</td>
-                                    <td>15만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>빈소 용품</td>
-                                    <td>부의록, 초, 향, 위패 등 일체</td>
-                                    <td>20만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>상복 (남성)</td>
-                                    <td>검정 양복 대여 (3벌)</td>
-                                    <td>15만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>상복 (여성)</td>
-                                    <td>현대식/전통식 여상복 대여 (3벌)</td>
-                                    <td>6만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>상주 용품</td>
-                                    <td>완장, 상장, 리본 등</td>
-                                    <td>무료</td>
-                                </tr>
-                                <tr class="group-start">
-                                    <td rowspan="2">차량 서비스</td>
-                                    <td>앰뷸런스</td>
-                                    <td>관내 지역 고인 이송</td>
-                                    <td>10만 원</td>
-                                </tr>
-                                <tr>
-                                    <td>장의 차량</td>
-                                    <td>리무진 또는 버스(왕복200km) 중 택 1</td>
-                                    <td>45만 원</td>
-                                </tr>
-                                <tr class="table-subtotal">
-                                    <td>정상 합계</td>
-                                    <td></td>
-                                    <td>각 품목별 단가 합산 금액</td>
-                                    <td>294만 원</td>
-                                </tr>
-                                <tr class="table-highlight">
-                                    <td>상담 회원가</td>
-                                    <td></td>
-                                    <td>별길상조 가족 특별 할인 적용</td>
-                                    <td>259만 원</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="product-grid" style="margin-top: 20px;">
+                    <!-- 상품 1: 무빈소맞춤 -->
+                    <div class="product-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="background: var(--primary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 700;">맞춤형 상품 1</span>
+                            <span style="color: var(--secondary-color); font-weight: 700; font-size: 1.25rem;">149만 원</span>
+                        </div>
+                        <h3 class="product-title" style="margin-bottom: 4px;">🌟 무빈소 맞춤</h3>
+                        <p class="product-description" style="margin-bottom: 8px;"><strong>"가족 중심의 간소하고 정중한 마지막 인사"</strong></p>
+                        <p style="font-size: 0.92rem; color: var(--text-gray); margin-bottom: 12px;">빈소를 차리지 않고 고인을 정성껏 모시는 실속형 상품입니다. 불필요한 절차는 과감히 줄이고 추모의 본질에 집중합니다.</p>
+                        
+                        <div style="margin: 10px 0 16px;">
+                            <a href="no-binso.html" style="display: inline-block; background: var(--primary-color); color: white; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-size: 0.88rem; font-weight: 700; transition: background 0.3s; box-shadow: 0 4px 12px rgba(0,0,128,0.15);">
+                                📖 무빈소 3일 절차·실제 총비용 완벽 가이드 보기 →
+                            </a>
+                        </div>
+
+                        <!-- 더하기 / 빼기 안내 박스 -->
+                        <div class="custom-add-remove-box">
+                            <div class="custom-box-col col-add">
+                                <h5>➕ 더할 수 있는 품목</h5>
+                                <ul>
+                                    <li>가족 전용 우등 버스/리무진 추가</li>
+                                    <li>고급 유골함 변경 (회원 30% 할인)</li>
+                                    <li>종교별 예식 지원 및 용품 추가</li>
+                                    <li>추모 생화 꽃장식 추가</li>
+                                </ul>
+                            </div>
+                            <div class="custom-box-col col-remove">
+                                <h5>➖ 뺄 수 있는 품목</h5>
+                                <ul>
+                                    <li>장의 차량 미이용 시 (-45만 원)</li>
+                                    <li>꽃관 장식 제외 시 (-20만 원)</li>
+                                    <li>수의 자체 소장/준비 시 (-10만 원)</li>
+                                    <li>앰뷸런스 자체 이용 시 (-10만 원)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="product-table-wrap">
+                            <table class="product-detail-table">
+                                <thead>
+                                    <tr>
+                                        <th>구분</th>
+                                        <th>세부 품목</th>
+                                        <th>상세 내용 및 규격</th>
+                                        <th>금액 (차감 기준)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="group-start">
+                                        <td rowspan="2">인력 서비스</td>
+                                        <td>장례지도사</td>
+                                        <td>3일간 장례 일정 전반 관리</td>
+                                        <td>30만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>염습상례사</td>
+                                        <td>1일 입관 및 염습 진행</td>
+                                        <td>15만 원</td>
+                                    </tr>
+                                    <tr class="group-start">
+                                        <td rowspan="5">장례 용품</td>
+                                        <td>관</td>
+                                        <td>화장 전용 오동나무 관</td>
+                                        <td>20만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>수의</td>
+                                        <td>화장 전용 수의</td>
+                                        <td>10만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>유골함</td>
+                                        <td>목함 제공</td>
+                                        <td>무료</td>
+                                    </tr>
+                                    <tr>
+                                        <td>꽃관 장식</td>
+                                        <td>관 내부 생화 장식</td>
+                                        <td>20만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>입관/수시 용품</td>
+                                        <td>관보, 염지, 소독약, 예단 등</td>
+                                        <td>15만 원</td>
+                                    </tr>
+                                    <tr class="group-start">
+                                        <td rowspan="2">차량 서비스</td>
+                                        <td>앰뷸런스</td>
+                                        <td>관내 고인 이송</td>
+                                        <td>10만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>장의 차량</td>
+                                        <td>리무진 또는 버스(왕복150km) 중 택 1</td>
+                                        <td>45만 원</td>
+                                    </tr>
+                                    <tr class="table-subtotal">
+                                        <td>정상 합계</td>
+                                        <td></td>
+                                        <td>각 품목별 단가 합산 금액</td>
+                                        <td>165만 원</td>
+                                    </tr>
+                                    <tr class="table-highlight">
+                                        <td>상담 회원가</td>
+                                        <td></td>
+                                        <td>별길상조 특별 할인 적용</td>
+                                        <td>149만 원</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 상품 2: 일반장맞춤 -->
+                    <div class="product-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="background: var(--primary-color); color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 700;">맞춤형 상품 2</span>
+                            <span style="color: var(--secondary-color); font-weight: 700; font-size: 1.25rem;">259만 원</span>
+                        </div>
+                        <h3 class="product-title" style="margin-bottom: 4px;">💐 일반장 맞춤 (가족장)</h3>
+                        <p class="product-description" style="margin-bottom: 8px;"><strong>"전통의 예와 격식을 갖춘 품격 있는 작별"</strong></p>
+                        <p style="font-size: 0.92rem; color: var(--text-gray); margin-bottom: 12px;">빈소를 마련하여 조문객을 맞이하고, 전문 인력이 3일 동안 유가족의 곁을 지키며 상황에 맞춰 품목을 가감합니다.</p>
+
+                        <!-- 더하기 / 빼기 안내 박스 -->
+                        <div class="custom-add-remove-box">
+                            <div class="custom-box-col col-add">
+                                <h5>➕ 더할 수 있는 품목</h5>
+                                <ul>
+                                    <li>접객도우미 시간 연장 또는 인원 추가</li>
+                                    <li>제단 생화 꽃장식 업그레이드</li>
+                                    <li>장의 차량(리무진+버스 동시) 추가</li>
+                                    <li>장거리(200km 초과) 배차 연장</li>
+                                </ul>
+                            </div>
+                            <div class="custom-box-col col-remove">
+                                <h5>➖ 뺄 수 있는 품목</h5>
+                                <ul>
+                                    <li>상복 미사용(개인 정장 착용) 시 (-15만~21만 원)</li>
+                                    <li>접객도우미 미사용/단축 시 (-12만~48만 원)</li>
+                                    <li>장의 차량 미이용 시 (-45만 원)</li>
+                                    <li>수의 자체 소장/준비 시 (-20만 원)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="product-table-wrap">
+                            <table class="product-detail-table">
+                                <thead>
+                                    <tr>
+                                        <th>구분</th>
+                                        <th>세부 품목</th>
+                                        <th>상세 내용 및 규격</th>
+                                        <th>금액 (차감 기준)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="group-start">
+                                        <td rowspan="3">인력 서비스</td>
+                                        <td>장례지도사</td>
+                                        <td>3일간 장례 일정 전반 관리 및 행정 안내</td>
+                                        <td>50만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>염습상례사</td>
+                                        <td>1일 입관 및 전문 염습 진행</td>
+                                        <td>15만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>접객도우미</td>
+                                        <td>장례식장 음식 관리 (4인 각 10시간)</td>
+                                        <td>48만 원</td>
+                                    </tr>
+                                    <tr class="group-start">
+                                        <td rowspan="9">장례 용품</td>
+                                        <td>관</td>
+                                        <td>화장 전용 오동나무 관</td>
+                                        <td>20만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>수의</td>
+                                        <td>고급 자수 수의 (화장 전용)</td>
+                                        <td>20만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>유골함</td>
+                                        <td>일반 자기 유골함</td>
+                                        <td>10만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>꽃관 장식</td>
+                                        <td>관 내부 생화 장식</td>
+                                        <td>20만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>입관/수시 용품</td>
+                                        <td>관보, 염지, 소독약, 예단 등</td>
+                                        <td>15만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>빈소 용품</td>
+                                        <td>부의록, 초, 향, 위패 등 일체</td>
+                                        <td>20만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>상복 (남성)</td>
+                                        <td>검정 양복 대여 (3벌)</td>
+                                        <td>15만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>상복 (여성)</td>
+                                        <td>현대식/전통식 여상복 대여 (3벌)</td>
+                                        <td>6만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>상주 용품</td>
+                                        <td>완장, 상장, 리본 등</td>
+                                        <td>무료</td>
+                                    </tr>
+                                    <tr class="group-start">
+                                        <td rowspan="2">차량 서비스</td>
+                                        <td>앰뷸런스</td>
+                                        <td>관내 지역 고인 이송</td>
+                                        <td>10만 원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>장의 차량</td>
+                                        <td>리무진 또는 버스(왕복200km) 중 택 1</td>
+                                        <td>45만 원</td>
+                                    </tr>
+                                    <tr class="table-subtotal">
+                                        <td>정상 합계</td>
+                                        <td></td>
+                                        <td>각 품목별 단가 합산 금액</td>
+                                        <td>294만 원</td>
+                                    </tr>
+                                    <tr class="table-highlight">
+                                        <td>상담 회원가</td>
+                                        <td></td>
+                                        <td>별길상조 가족 특별 할인 적용</td>
+                                        <td>259만 원</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================
+                 [탭 2] 기본 패키지 상품 (Standard Package + 공제 서비스)
+                 ============================================================ -->
+            <div class="product-tab-content" id="tab-content-package">
+                <!-- 패키지 배너 -->
+                <div class="package-banner">
+                    <h3>🛡️ 별길 기본 패키지 & 미사용 품목 100% 공제 서비스</h3>
+                    <p>
+                        "무엇을 빼고 더할지 일일이 결정하기 어려우신가요?<br>
+                        처음에는 전문가가 <strong>빈틈없는 풀패키지</strong>로 든든하게 챙겨드리고,
+                        장례 후 <strong>실제 사용하지 않은 품목은 마지막 1원까지 정산서에서 정확하게 차감(공제)</strong>해 드립니다."
+                    </p>
+                </div>
+
+                <div class="product-grid" style="margin-top: 0;">
+                    <!-- 패키지 1: 알찬 기본 패키지 구성안 -->
+                    <div class="product-card" style="border: 2px solid var(--primary-color);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="background: #d97706; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 700;">올인원 안심 패키지</span>
+                            <span style="color: var(--secondary-color); font-weight: 700; font-size: 1.25rem;">259만 원 (공제 보장)</span>
+                        </div>
+                        <h3 class="product-title" style="margin-bottom: 6px;">🎁 [별길 기본 패키지] 3일장 올인원</h3>
+                        <p class="product-description" style="font-size: 0.95rem; margin-bottom: 15px;">장례에 필요한 모든 인력·용품·차량이 빠짐없이 포함된 프리미엄 풀구성</p>
+
+                        <div style="background: white; border-radius: 12px; padding: 18px; border: 1px solid var(--border-color); margin-bottom: 20px;">
+                            <h4 style="margin: 0 0 12px 0; font-size: 0.98rem; color: var(--primary-color);">📦 패키지 기본 포함 내역</h4>
+                            <ul style="margin: 0; padding-left: 0; font-size: 0.88rem; line-height: 1.8;">
+                                <li><strong>전문 인력:</strong> 3일 장례지도사 1명 + 1일 입관/염습 상례사 1명 + 접객도우미 4명(각 10시간)</li>
+                                <li><strong>고인 용품:</strong> 화장 오동나무 관 + 고급 자수 수의 + 일반 자기 유골함 + 생화 꽃관 장식 + 입관용품 일체</li>
+                                <li><strong>빈소 용품:</strong> 현대식 부의록, 초, 향, 위패 등 빈소 용품 일체 + 상주 용품 일체</li>
+                                <li><strong>상복 대여:</strong> 남성 현대식 양복 3벌 + 여성 개량/전통 상복 3벌</li>
+                                <li><strong>차량 서비스:</strong> 관내 고인 이송 앰뷸런스 + 장의차량(리무진 또는 버스 왕복 200km 중 택1)</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 12px; padding: 16px; text-align: center;">
+                            <p style="margin: 0; color: #065f46; font-size: 0.92rem; font-weight: 600;">
+                                🤝 <strong>별길의 약속:</strong> 패키지 계약 후 쓰지 않은 품목은 우측 [공제 기준표]에 따라 100% 정산 차감됩니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 패키지 2: 미사용 품목 공제 기준표 & 실제 정산 영수증 시뮬레이션 -->
+                    <div>
+                        <!-- 미사용 품목 공제 기준표 -->
+                        <div class="product-card" style="margin-bottom: 25px;">
+                            <h3 class="product-title" style="font-size: 1.25rem; color: #b45309; margin-bottom: 8px;">
+                                📋 미사용 품목 투명 공제 기준표
+                            </h3>
+                            <p style="font-size: 0.88rem; color: var(--text-gray); margin-bottom: 15px;">
+                                상황에 따라 사용하지 않은 품목은 정산 시 정직하게 차감해 드립니다.
+                            </p>
+
+                            <div class="product-table-wrap" style="margin-top: 10px;">
+                                <table class="product-detail-table">
+                                    <thead>
+                                        <tr>
+                                            <th>품목</th>
+                                            <th>미사용 사유 예시</th>
+                                            <th>차감 공제 금액</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="font-weight: 700; color: var(--primary-color);">남성 상복</td>
+                                            <td>자택 보유 정장 착용 시</td>
+                                            <td style="color: #dc2626; font-weight: 700;">1벌당 5만 원 차감</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 700; color: var(--primary-color);">여성 상복</td>
+                                            <td>개인 검정 의류 착용 시</td>
+                                            <td style="color: #dc2626; font-weight: 700;">1벌당 2만 원 차감</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 700; color: var(--primary-color);">접객 도우미</td>
+                                            <td>조문객 감소로 인원 미배치 시</td>
+                                            <td style="color: #dc2626; font-weight: 700;">1인당 12만 원 차감</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 700; color: var(--primary-color);">장의 차량</td>
+                                            <td>개인 승용차/화장장 인접 이용 시</td>
+                                            <td style="color: #dc2626; font-weight: 700;">45만 원 전액 차감</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 700; color: var(--primary-color);">수의</td>
+                                            <td>가족 소장 수의 준비 시</td>
+                                            <td style="color: #dc2626; font-weight: 700;">20만 원 전액 차감</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 700; color: var(--primary-color);">유골함</td>
+                                            <td>선산/납골당 전용함 보유 시</td>
+                                            <td style="color: #dc2626; font-weight: 700;">10만 원 전액 차감</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- 실제 고객 투명 정산서(영수증) 예시 -->
+                        <div class="receipt-card">
+                            <div class="receipt-header">
+                                <h4>🧾 실제 정산 영수증 예시 (A 유가족 사례)</h4>
+                                <p style="margin: 0; font-size: 0.85rem; color: var(--text-gray);">조문객이 적어 상복과 도우미를 덜 사용하신 경우</p>
+                            </div>
+                            <div class="receipt-row">
+                                <span>별길 기본 패키지 (3일장 정가)</span>
+                                <span>2,590,000원</span>
+                            </div>
+                            <div class="receipt-row deduction">
+                                <span>(-) 남성 상복 3벌 미사용 (가족 정장 착용)</span>
+                                <span>-150,000원</span>
+                            </div>
+                            <div class="receipt-row deduction">
+                                <span>(-) 접객도우미 1인 미사용 (가족 직접 접객)</span>
+                                <span>-120,000원</span>
+                            </div>
+                            <div class="receipt-total">
+                                <span>최종 청구 정산 금액</span>
+                                <span style="color: #0284c7;">2,320,000원 <small style="font-size:0.8rem; color:#dc2626;">(27만 원 절감!)</small></span>
+                            </div>
+                            <p style="margin: 12px 0 0 0; text-align: center; font-size: 0.82rem; color: var(--text-gray);">
+                                ※ 장례 종료 후 장례지도사가 영수증 명세서를 항목별로 대조하여 즉시 공제해 드립니다.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- 공통 유의사항 -->
-            <div class="common-notes">
+            <div class="common-notes" style="margin-top: 40px;">
                 <h3 class="notes-title">⚠️ 공통 유의사항</h3>
                 <ul>
-                    <li>차량 거리 초과 시 1km당 2,000원의 추가 비용이 발생합니다(리무진 수도권 화장장 편도, 버스 왕복 거리적용)</li>
+                    <li>차량 거리 초과 시 1km당 2,000원의 추가 비용이 발생합니다(리무진 수도권 화장장 편도, 버스 왕복 거리적용).</li>
                     <li>앰뷸런스 이용 시 관외 지역은 추가 비용이 발생합니다.</li>
-                    <li>[별길상조 회원 혜택] 고급 유골함으로 변경 시 30% 할인가 제공</li>
+                    <li>[별길상조 회원 혜택] 고급 유골함으로 변경 시 30% 할인가 제공됩니다.</li>
+                    <li>맞춤형 상품의 품목 차감 및 패키지 공제 서비스는 사전 상담 또는 발인 전 정산 시 최종 확정됩니다.</li>
                 </ul>
             </div>
         </div>
     </section>
+
+    <!-- 탭 전환 스크립트 -->
+    <script>
+        function switchProductTab(type) {
+            var tabCustom = document.getElementById('tab-content-custom');
+            var tabPackage = document.getElementById('tab-content-package');
+            var btnCustom = document.getElementById('tab-btn-custom');
+            var btnPackage = document.getElementById('tab-btn-package');
+            var guideCustom = document.getElementById('guide-card-custom');
+            var guidePackage = document.getElementById('guide-card-package');
+
+            if (!tabCustom || !tabPackage) return;
+
+            if (type === 'custom') {
+                tabCustom.classList.add('active');
+                tabPackage.classList.remove('active');
+                if (btnCustom) btnCustom.classList.add('active');
+                if (btnPackage) btnPackage.classList.remove('active');
+                if (guideCustom) guideCustom.classList.add('active');
+                if (guidePackage) guidePackage.classList.remove('active');
+            } else {
+                tabCustom.classList.remove('active');
+                tabPackage.classList.add('active');
+                if (btnCustom) btnCustom.classList.remove('active');
+                if (btnPackage) btnPackage.classList.add('active');
+                if (guideCustom) guideCustom.classList.remove('active');
+                if (guidePackage) guidePackage.classList.add('active');
+            }
+        }
+    </script>
 
     <!-- ============================================================
          약속 섹션 (Promise Section)
