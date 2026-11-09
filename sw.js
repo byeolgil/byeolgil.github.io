@@ -3,7 +3,7 @@
 // PWA 오프라인 기능 및 캐싱 지원
 // ============================================================
 
-const CACHE_NAME = 'byeolgil-v2';
+const CACHE_NAME = 'byeolgil-v3';
 const OFFLINE_URL = '/offline.html';
 
 // 캐시할 리소스 목록
