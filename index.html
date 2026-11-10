@@ -2937,6 +2937,64 @@
             flex-shrink: 0;
         }
 
+        .diy-qty-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .diy-qty-control {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 28px;
+        }
+
+        .diy-qty-btn {
+            background: #ffffff;
+            border: none;
+            width: 28px;
+            height: 28px;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            padding: 0;
+            user-select: none;
+            transition: background 0.15s;
+        }
+
+        .diy-qty-btn:hover,
+        .diy-qty-btn:active {
+            background: #e2e8f0;
+        }
+
+        .diy-qty-val {
+            min-width: 38px;
+            text-align: center;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            padding: 0 5px;
+        }
+
+        .diy-subprice-note {
+            display: block;
+            font-size: 0.74rem;
+            color: #64748b;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
         .diy-calc-bar {
             background: #1e293b;
             color: white;
@@ -3832,20 +3890,65 @@
                                     </tr>
                                     <tr class="group-start">
                                         <td rowspan="2">상복</td>
-                                        <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="general" data-price="50000" checked onchange="updateDiyTotal('general')"><strong>남자상복 1벌대여</strong></label></td>
-                                        <td style="font-weight: 700; color: var(--primary-color); text-align: right;">50,000원</td>
-                                        <td style="text-align: left;">검정 양복 1벌 대여</td>
+                                        <td>
+                                            <div class="diy-qty-wrap">
+                                                <label class="diy-item-label">
+                                                    <input type="checkbox" class="diy-item-check" id="diy-check-mansuit" data-group="general" data-price="50000" data-qty="1" data-unit="벌" data-qty-id="mansuit" checked onchange="onDiyCheckChange(this, 'general')">
+                                                    <strong>남자상복 대여</strong>
+                                                </label>
+                                                <div class="diy-qty-control" aria-label="남자상복 수량 조절">
+                                                    <button type="button" class="diy-qty-btn" onclick="changeDiyQty('mansuit', -1, 'general')" aria-label="남자상복 수량 감소">−</button>
+                                                    <span class="diy-qty-val" id="diy-qty-mansuit">1벌</span>
+                                                    <button type="button" class="diy-qty-btn" onclick="changeDiyQty('mansuit', 1, 'general')" aria-label="남자상복 수량 증가">+</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="font-weight: 700; color: var(--primary-color); text-align: right;">
+                                            <span id="diy-price-mansuit">50,000원</span>
+                                            <span class="diy-subprice-note" id="diy-note-mansuit">1벌당 50,000원</span>
+                                        </td>
+                                        <td style="text-align: left;">검정 양복 대여 (수량 조절 가능)</td>
                                     </tr>
                                     <tr>
-                                        <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="general" data-price="20000" checked onchange="updateDiyTotal('general')"><strong>여자상복 1벌대여</strong></label></td>
-                                        <td style="font-weight: 700; color: var(--primary-color); text-align: right;">20,000원</td>
-                                        <td style="text-align: left;">현대/개량 여상복 1벌</td>
+                                        <td>
+                                            <div class="diy-qty-wrap">
+                                                <label class="diy-item-label">
+                                                    <input type="checkbox" class="diy-item-check" id="diy-check-womansuit" data-group="general" data-price="20000" data-qty="1" data-unit="벌" data-qty-id="womansuit" checked onchange="onDiyCheckChange(this, 'general')">
+                                                    <strong>여자상복 대여</strong>
+                                                </label>
+                                                <div class="diy-qty-control" aria-label="여자상복 수량 조절">
+                                                    <button type="button" class="diy-qty-btn" onclick="changeDiyQty('womansuit', -1, 'general')" aria-label="여자상복 수량 감소">−</button>
+                                                    <span class="diy-qty-val" id="diy-qty-womansuit">1벌</span>
+                                                    <button type="button" class="diy-qty-btn" onclick="changeDiyQty('womansuit', 1, 'general')" aria-label="여자상복 수량 증가">+</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="font-weight: 700; color: var(--primary-color); text-align: right;">
+                                            <span id="diy-price-womansuit">20,000원</span>
+                                            <span class="diy-subprice-note" id="diy-note-womansuit">1벌당 20,000원</span>
+                                        </td>
+                                        <td style="text-align: left;">현대/개량 여상복 (수량 조절 가능)</td>
                                     </tr>
                                     <tr class="group-start">
                                         <td rowspan="3">인력</td>
-                                        <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="general" data-price="120000" checked onchange="updateDiyTotal('general')"><strong>접객도우미</strong></label></td>
-                                        <td style="font-weight: 700; color: var(--primary-color); text-align: right;">120,000원</td>
-                                        <td style="text-align: left;">주간 10시간 1인 기준</td>
+                                        <td>
+                                            <div class="diy-qty-wrap">
+                                                <label class="diy-item-label">
+                                                    <input type="checkbox" class="diy-item-check" id="diy-check-helper" data-group="general" data-price="120000" data-qty="1" data-unit="명" data-qty-id="helper" checked onchange="onDiyCheckChange(this, 'general')">
+                                                    <strong>접객도우미</strong>
+                                                </label>
+                                                <div class="diy-qty-control" aria-label="접객도우미 인원 조절">
+                                                    <button type="button" class="diy-qty-btn" onclick="changeDiyQty('helper', -1, 'general')" aria-label="접객도우미 인원 감소">−</button>
+                                                    <span class="diy-qty-val" id="diy-qty-helper">1명</span>
+                                                    <button type="button" class="diy-qty-btn" onclick="changeDiyQty('helper', 1, 'general')" aria-label="접객도우미 인원 증가">+</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="font-weight: 700; color: var(--primary-color); text-align: right;">
+                                            <span id="diy-price-helper">120,000원</span>
+                                            <span class="diy-subprice-note" id="diy-note-helper">1인 120,000원 (10시간)</span>
+                                        </td>
+                                        <td style="text-align: left;">주간 10시간 기준 (인원 조절 가능)</td>
                                     </tr>
                                     <tr>
                                         <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="general" data-price="150000" checked onchange="updateDiyTotal('general')"><strong>입관상례사</strong></label></td>
@@ -4088,14 +4191,64 @@
             }
         }
 
+        function syncQtyRowUI(checkbox) {
+            var qtyId = checkbox.getAttribute('data-qty-id');
+            if (!qtyId) return;
+            var unitPrice = parseInt(checkbox.getAttribute('data-price') || '0', 10);
+            var qty = parseInt(checkbox.getAttribute('data-qty') || '1', 10);
+            var unit = checkbox.getAttribute('data-unit') || '개';
+            var qtyEl = document.getElementById('diy-qty-' + qtyId);
+            var priceEl = document.getElementById('diy-price-' + qtyId);
+
+            if (!checkbox.checked || qty <= 0) {
+                if (qtyEl) qtyEl.textContent = '0' + unit;
+                if (priceEl) priceEl.textContent = '0원';
+            } else {
+                if (qtyEl) qtyEl.textContent = qty + unit;
+                if (priceEl) priceEl.textContent = (unitPrice * qty).toLocaleString('ko-KR') + '원';
+            }
+        }
+
+        function onDiyCheckChange(checkbox, group) {
+            var qtyId = checkbox.getAttribute('data-qty-id');
+            if (qtyId) {
+                var currentQty = parseInt(checkbox.getAttribute('data-qty') || '1', 10);
+                if (checkbox.checked && currentQty <= 0) {
+                    checkbox.setAttribute('data-qty', '1');
+                } else if (!checkbox.checked) {
+                    checkbox.setAttribute('data-qty', '0');
+                }
+                syncQtyRowUI(checkbox);
+            }
+            updateDiyTotal(group);
+        }
+
+        function changeDiyQty(qtyId, delta, group) {
+            var checkbox = document.getElementById('diy-check-' + qtyId);
+            if (!checkbox) return;
+            var currentQty = checkbox.checked ? parseInt(checkbox.getAttribute('data-qty') || '1', 10) : 0;
+            var nextQty = currentQty + delta;
+            if (nextQty < 0) nextQty = 0;
+            if (nextQty > 30) nextQty = 30;
+
+            checkbox.setAttribute('data-qty', String(nextQty));
+            checkbox.checked = nextQty > 0;
+            syncQtyRowUI(checkbox);
+            updateDiyTotal(group);
+        }
+
         function updateDiyTotal(group) {
             var checkboxes = document.querySelectorAll('.diy-item-check[data-group="' + group + '"]');
             var total = 0;
             var count = 0;
             for (var i = 0; i < checkboxes.length; i++) {
                 if (checkboxes[i].checked) {
-                    total += parseInt(checkboxes[i].getAttribute('data-price') || '0', 10);
-                    count++;
+                    var unitPrice = parseInt(checkboxes[i].getAttribute('data-price') || '0', 10);
+                    var qty = parseInt(checkboxes[i].getAttribute('data-qty') || '1', 10);
+                    if (qty > 0) {
+                        total += unitPrice * qty;
+                        count++;
+                    }
                 }
             }
             var totalEl = document.getElementById('diy-total-' + group);
@@ -4108,6 +4261,15 @@
             var checkboxes = document.querySelectorAll('.diy-item-check[data-group="' + group + '"]');
             for (var i = 0; i < checkboxes.length; i++) {
                 checkboxes[i].checked = checkedState;
+                if (checkboxes[i].hasAttribute('data-qty-id')) {
+                    var curQty = parseInt(checkboxes[i].getAttribute('data-qty') || '1', 10);
+                    if (checkedState && curQty <= 0) {
+                        checkboxes[i].setAttribute('data-qty', '1');
+                    } else if (!checkedState) {
+                        checkboxes[i].setAttribute('data-qty', '0');
+                    }
+                    syncQtyRowUI(checkboxes[i]);
+                }
             }
             updateDiyTotal(group);
         }
