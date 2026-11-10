@@ -662,8 +662,150 @@
             margin-bottom: 20px;
         }
 
+        /* 조립형 상품 실시간 셀프 견적 계산기 & 모바일 고정 바 */
+        .diy-item-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+            padding: 2px 0;
+        }
+        .diy-item-check {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary-color);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .diy-calc-bar {
+            background: #1e293b;
+            color: white;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        .diy-calc-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .diy-calc-label {
+            font-size: 0.84rem;
+            color: #cbd5e1;
+        }
+        .diy-calc-total {
+            font-size: 1.38rem;
+            font-weight: 800;
+            color: #facc15;
+        }
+        .diy-calc-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .diy-btn-sub {
+            background: rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 8px 13px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .diy-btn-apply {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 8px;
+            font-size: 0.86rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .mobile-sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 9990;
+            gap: 10px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .mobile-sticky-btn {
+            flex: 1;
+            text-align: center;
+            padding: 13px 10px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .mobile-sticky-call {
+            background: var(--primary-color);
+            color: white;
+        }
+        .mobile-sticky-est {
+            background: var(--secondary-color);
+            color: white;
+        }
+
         /* 반응형 */
         @media (max-width: 968px) {
+            .header-container {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 10px 15px 0;
+            }
+            .header-nav {
+                display: flex;
+                width: 100%;
+                order: 3;
+                margin-top: 8px;
+                padding: 8px 2px;
+                border-top: 1px solid #eef2f7;
+                overflow-x: auto;
+                white-space: nowrap;
+                gap: 6px;
+                scrollbar-width: none;
+            }
+            .header-nav::-webkit-scrollbar {
+                display: none;
+            }
+            .header-nav a {
+                display: inline-block;
+                padding: 5px 12px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                border-radius: 20px;
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+            }
+            .header-phone {
+                font-size: 0.85rem;
+                padding: 7px 14px;
+            }
+            .page-hero {
+                padding-top: 130px;
+            }
             .timeline-grid {
                 grid-template-columns: 1fr;
             }
@@ -674,10 +816,29 @@
                 grid-template-columns: 1fr;
             }
             .page-hero h1 {
-                font-size: 2rem;
+                font-size: 1.9rem;
+                word-break: keep-all;
             }
-            .header-nav {
-                display: none;
+            .mobile-sticky-cta {
+                display: flex;
+            }
+            footer {
+                padding-bottom: 95px;
+            }
+        }
+        @media (max-width: 600px) {
+            .diy-calc-bar {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                padding: 14px;
+            }
+            .diy-calc-actions {
+                justify-content: center;
+            }
+            .diy-btn-sub, .diy-btn-apply {
+                flex: 1;
+                text-align: center;
             }
         }
     </style>
@@ -860,70 +1021,83 @@
                 불필요한 거품을 쏙 빼고, 꼭 필요한 서비스만 선택하여 투명하게 이용하세요.
             </div>
 
-            <div class="product-table-wrap">
+            <div class="product-table-wrap" id="diy-calc-section">
                 <table class="detail-table">
                     <thead>
                         <tr>
-                            <th style="width: 15%;">구분</th>
-                            <th style="width: 32%;">품목명</th>
-                            <th style="width: 25%;">단가 (원)</th>
-                            <th style="width: 28%;">비고 / 설명</th>
+                            <th style="width: 14%;">구분</th>
+                            <th style="width: 38%;">품목명 (클릭하여 선택)</th>
+                            <th style="width: 23%;">단가 (원)</th>
+                            <th style="width: 25%;">비고 / 설명</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: center; background: #eef3f9;">이동</td>
-                            <td><strong>이송 앰블런스 (관내)</strong></td>
+                            <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="nobinso" data-price="100000" checked onchange="updateDiyTotal('nobinso')"><strong>이송 앰블런스 (관내)</strong></label></td>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: right;">100,000원</td>
                             <td>고인 이송</td>
                         </tr>
                         <tr>
                             <td rowspan="2" style="font-weight: 700; color: var(--primary-color); text-align: center; background: #eef3f9;">차량</td>
-                            <td><strong>장의차량 리무진</strong></td>
+                            <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="nobinso" data-price="350000" checked onchange="updateDiyTotal('nobinso')"><strong>장의차량 리무진</strong></label></td>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: right;">350,000원</td>
                             <td>의전용 차량</td>
                         </tr>
                         <tr>
-                            <td><strong>장의차량 버스</strong></td>
+                            <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="nobinso" data-price="400000" onchange="updateDiyTotal('nobinso')"><strong>장의차량 버스</strong></label></td>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: right;">400,000원</td>
                             <td>왕복 150km 기준</td>
                         </tr>
                         <tr>
                             <td rowspan="2" style="font-weight: 700; color: var(--primary-color); text-align: center; background: #eef3f9;">용품</td>
-                            <td><strong>화장용 오동관</strong></td>
+                            <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="nobinso" data-price="200000" checked onchange="updateDiyTotal('nobinso')"><strong>화장용 오동관</strong></label></td>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: right;">200,000원</td>
                             <td>화장 전용 관</td>
                         </tr>
                         <tr>
-                            <td><strong>화장용 고급 수의</strong></td>
+                            <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="nobinso" data-price="100000" checked onchange="updateDiyTotal('nobinso')"><strong>화장용 고급 수의</strong></label></td>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: right;">100,000원</td>
                             <td>정갈한 수의</td>
                         </tr>
                         <tr>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: center; background: #eef3f9;">장식</td>
-                            <td><strong>생화 관장식</strong></td>
+                            <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="nobinso" data-price="150000" checked onchange="updateDiyTotal('nobinso')"><strong>생화 관장식</strong></label></td>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: right;">150,000원</td>
                             <td>마지막 길을 아름답게 장식</td>
                         </tr>
                         <tr>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: center; background: #eef3f9;">용품</td>
-                            <td><strong>입관용품 일체</strong></td>
+                            <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="nobinso" data-price="150000" checked onchange="updateDiyTotal('nobinso')"><strong>입관용품 일체</strong></label></td>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: right;">150,000원</td>
                             <td>입관에 필요한 부속 용품</td>
                         </tr>
                         <tr>
                             <td rowspan="2" style="font-weight: 700; color: var(--primary-color); text-align: center; background: #eef3f9;">인력</td>
-                            <td><strong>입관상례사</strong></td>
+                            <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="nobinso" data-price="150000" checked onchange="updateDiyTotal('nobinso')"><strong>입관상례사</strong></label></td>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: right;">150,000원</td>
                             <td>전문 입관 진행</td>
                         </tr>
                         <tr>
-                            <td><strong>장례지도사</strong></td>
+                            <td><label class="diy-item-label"><input type="checkbox" class="diy-item-check" data-group="nobinso" data-price="250000" checked onchange="updateDiyTotal('nobinso')"><strong>장례지도사</strong></label></td>
                             <td style="font-weight: 700; color: var(--primary-color); text-align: right;">250,000원</td>
                             <td>전담 장례 지도</td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <!-- 맞춤 무빈소 실시간 계산 바 -->
+            <div class="diy-calc-bar">
+                <div class="diy-calc-info">
+                    <span class="diy-calc-label">🧮 선택한 맞춤 무빈소 품목 예상 합계 (<span id="diy-count-nobinso">8</span>개 선택)</span>
+                    <span class="diy-calc-total" id="diy-total-nobinso">1,450,000원</span>
+                </div>
+                <div class="diy-calc-actions">
+                    <button type="button" class="diy-btn-sub" onclick="toggleAllDiy('nobinso', true)">전체선택</button>
+                    <button type="button" class="diy-btn-sub" onclick="toggleAllDiy('nobinso', false)">전체해제</button>
+                    <a href="index.html#estimate" class="diy-btn-apply">이 견적으로 상담</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1034,5 +1208,36 @@
         </div>
     </footer>
 
+    <!-- 모바일 하단 고정 CTA 바 (모바일 전용) -->
+    <div class="mobile-sticky-cta" role="navigation" aria-label="모바일 빠른 상담 메뉴">
+        <a href="tel:1844-2241" class="mobile-sticky-btn mobile-sticky-call">📞 24시 긴급출동·상담</a>
+        <a href="#diy-calc-section" class="mobile-sticky-btn mobile-sticky-est">🧮 셀프 견적 계산</a>
+    </div>
+
+    <script>
+        function updateDiyTotal(group) {
+            var checkboxes = document.querySelectorAll('.diy-item-check[data-group="' + group + '"]');
+            var total = 0;
+            var count = 0;
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    total += parseInt(checkboxes[i].getAttribute('data-price') || '0', 10);
+                    count++;
+                }
+            }
+            var totalEl = document.getElementById('diy-total-' + group);
+            var countEl = document.getElementById('diy-count-' + group);
+            if (totalEl) totalEl.textContent = total.toLocaleString('ko-KR') + '원';
+            if (countEl) countEl.textContent = count;
+        }
+
+        function toggleAllDiy(group, checkedState) {
+            var checkboxes = document.querySelectorAll('.diy-item-check[data-group="' + group + '"]');
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = checkedState;
+            }
+            updateDiyTotal(group);
+        }
+    </script>
 </body>
 </html>
