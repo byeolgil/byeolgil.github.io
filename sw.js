@@ -3,16 +3,14 @@
 // PWA 오프라인 기능 및 캐싱 지원
 // ============================================================
 
-const CACHE_NAME = 'byeolgil-v3';
+const CACHE_NAME = 'byeolgil-v4';
 const OFFLINE_URL = '/offline.html';
 
-// 캐시할 리소스 목록
+// 캐시할 정적 리소스 목록
 const CACHE_ASSETS = [
-    '/',
-    '/index.html',
     '/offline.html',
     '/manifest.json',
-    '/images/1.png',
+    '/images/hero_main.jpg',
     '/images/2.png',
     '/images/3.png',
     '/images/4.png',
@@ -60,12 +58,46 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// 네트워크 요청 가로채기 (Cache First 전략)
+// 네트워크 요청 가로채기
+// - HTML / JSON / version.txt: Network First (항상 최신 콘텐츠 우선 제공)
+// - 정적 이미지 등: Cache First
 self.addEventListener('fetch', (event) => {
-    // Google Analytics, 외부 리소스는 캐시하지 않음
-    if (event.request.url.includes('google') || 
-        event.request.url.includes('fonts.') ||
+    const url = event.request.url;
+
+    // 외부 리소스(GA, 폰트 등) 및 GET 이외 요청, version.txt는 그대로 통과
+    if (url.includes('google') ||
+        url.includes('fonts.') ||
+        url.includes('version.txt') ||
         event.request.method !== 'GET') {
+        return;
+    }
+
+    const acceptHeader = event.request.headers.get('accept') || '';
+    const isHtmlOrData = event.request.mode === 'navigate' ||
+        acceptHeader.includes('text/html') ||
+        url.includes('.json');
+
+    if (isHtmlOrData) {
+        event.respondWith(
+            fetch(event.request)
+                .then((networkResponse) => {
+                    if (networkResponse && networkResponse.status === 200 && !url.includes('stats.json')) {
+                        const responseClone = networkResponse.clone();
+                        caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(event.request, responseClone);
+                        });
+                    }
+                    return networkResponse;
+                })
+                .catch(() => {
+                    return caches.match(event.request).then((cached) => {
+                        if (cached) return cached;
+                        if (acceptHeader.includes('text/html')) {
+                            return caches.match(OFFLINE_URL);
+                        }
+                    });
+                })
+        );
         return;
     }
 
@@ -73,14 +105,11 @@ self.addEventListener('fetch', (event) => {
         caches.match(event.request)
             .then((cachedResponse) => {
                 if (cachedResponse) {
-                    // 캐시에 있으면 캐시된 응답 반환
                     return cachedResponse;
                 }
 
-                // 캐시에 없으면 네트워크 요청
                 return fetch(event.request)
                     .then((networkResponse) => {
-                        // 유효한 응답이면 캐시에 저장
                         if (networkResponse && networkResponse.status === 200) {
                             const responseClone = networkResponse.clone();
                             caches.open(CACHE_NAME)
@@ -89,12 +118,6 @@ self.addEventListener('fetch', (event) => {
                                 });
                         }
                         return networkResponse;
-                    })
-                    .catch(() => {
-                        // 네트워크 실패 시 오프라인 페이지 반환 (HTML 요청인 경우)
-                        if (event.request.headers.get('accept').includes('text/html')) {
-                            return caches.match(OFFLINE_URL);
-                        }
                     });
             })
     );

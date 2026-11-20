@@ -11,7 +11,7 @@
     <!-- 1. 메인 홈페이지 -->
     <url>
         <loc>https://www.byeolgil.co.kr/</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-20</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -19,7 +19,7 @@
     <!-- 2. 무빈소 장례 완벽 가이드 -->
     <url>
         <loc>https://www.byeolgil.co.kr/no-binso.html</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -27,7 +27,7 @@
     <!-- 3. 이용약관 -->
     <url>
         <loc>https://www.byeolgil.co.kr/terms.html</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-20</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -35,7 +35,7 @@
     <!-- 4. 개인정보처리방침 -->
     <url>
         <loc>https://www.byeolgil.co.kr/privacy.html</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-20</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>

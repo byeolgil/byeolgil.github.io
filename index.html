@@ -115,12 +115,8 @@
     <!-- ========================================
          검색엔진 사이트 소유권 인증 태그
          - Naver: 네이버 서치어드바이저 인증 완료
-         - Google: 구글 서치 콘솔 인증 코드 (발급 후 content 값 교체)
-         - Bing: 마이크로소프트 Bing 웹마스터 도구
          ======================================== -->
     <meta name="naver-site-verification" content="b242f9a6f9903ae5c715624ec702a282553dd12e">
-    <meta name="google-site-verification" content="1234512345">
-    <meta name="msvalidate.01" content="123451234512345">
 
     <!-- ========================================
          추가 SEO 메타 태그
@@ -155,7 +151,7 @@
          - apple-mobile-web-app-title: iOS 홈화면 앱 이름
          - apple-mobile-web-app-status-bar-style: iOS 상태바 스타일
          ======================================== -->
-    <meta name="theme-color" content="#6B4E3D">
+    <meta name="theme-color" content="#162447">
     <meta name="format-detection" content="telephone=yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -176,10 +172,10 @@
     <meta property="og:site_name" content="별길상조">
     <meta property="og:title" content="별길상조 - 서울·경기·인천 후불상조 전문 | 수도권 무빈소·가족장 24시 장례">
     <meta property="og:description" content="서울·경기·인천 수도권 전지역 후불식상조 전문 별길상조. 무빈소 149만·가족장 259만 원 투명 정찰제, 24시간 긴급 출동.">
-    <meta property="og:image" content="https://www.byeolgil.co.kr/images/6.png">
+    <meta property="og:image" content="https://www.byeolgil.co.kr/images/hero_main.jpg">
     <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="별길상조 로고">
+    <meta property="og:image:height" content="900">
+    <meta property="og:image:alt" content="별길상조 전문 장례지도사와 유가족의 따뜻한 맞춤형 상담">
     <meta property="og:url" content="https://www.byeolgil.co.kr">
     <meta property="og:locale" content="ko_KR">
 
@@ -191,8 +187,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="별길상조 - 서울·경기·인천 후불상조 전문 | 수도권 무빈소·가족장 24시 장례">
     <meta name="twitter:description" content="서울·경기·인천 수도권 전지역 후불식상조 전문 별길상조. 무빈소 149만·가족장 259만 원 투명 정찰제, 24시간 긴급 출동.">
-    <meta name="twitter:image" content="https://www.byeolgil.co.kr/images/6.png">
-    <meta name="twitter:image:alt" content="별길상조 로고">
+    <meta name="twitter:image" content="https://www.byeolgil.co.kr/images/hero_main.jpg">
+    <meta name="twitter:image:alt" content="별길상조 전문 장례지도사와 유가족의 따뜻한 맞춤형 상담">
 
     <!-- ========================================
          Canonical URL
@@ -232,17 +228,17 @@
     <link rel="preload" as="image" href="images/hero_main.jpg" id="hero-preload">
 
     <!-- ========================================
-         이미지 캐시 무효화 (항상 최신 이미지 로드)
-         - images/ 경로의 모든 src에 ?t=<timestamp> 자동 부여
-         - MutationObserver로 DOM 파싱 중 가로채기
+         이미지 캐시 버저닝 (배포 시점 기준 갱신 + 재방문 캐시 활용)
+         - 배포 시 {{TIMESTAMP}}로 치환되어 새 배포 때만 이미지 캐시 갱신
          ======================================== -->
     <script>
         (function() {
-            var ts = Date.now();
+            var deployTs = '{{TIMESTAMP}}';
+            var ts = (deployTs.indexOf('{') === -1 && deployTs) ? deployTs : '20261120';
             function addTs(url) {
                 if (!url || url.indexOf('images/') === -1) return url;
                 if (url.indexOf('?') !== -1) return url;
-                return url + '?t=' + ts;
+                return url + '?v=' + ts;
             }
             // preload 링크 즉시 갱신
             var pre = document.getElementById('hero-preload');
@@ -302,11 +298,12 @@
         "@type": "LocalBusiness",
         "@id": "https://www.byeolgil.co.kr/#organization",
         "name": "별길상조",
-        "alternateName": "별길 상조 서비스",
+        "legalName": "별길장례",
+        "alternateName": "별길장례",
         "description": "서울·경기·인천 수도권 전지역 후불식상조 전문 업체입니다. 서울추모공원, 인천가족공원 등 수도권 공공 화장장 연계 및 무빈소·가족장 장례까지 24시간 긴급 출동 상담 가능합니다.",
         "url": "https://www.byeolgil.co.kr",
         "logo": "https://www.byeolgil.co.kr/images/6.png",
-        "image": "https://www.byeolgil.co.kr/images/6.png",
+        "image": "https://www.byeolgil.co.kr/images/hero_main.jpg",
         "telephone": "+82-1844-2241",
         "email": "admin@byeolgil.co.kr",
         "priceRange": "₩₩",
@@ -392,7 +389,8 @@
             }
         },
         "sameAs": [
-            "https://www.byeolgil.co.kr"
+            "https://www.byeolgil.co.kr",
+            "https://blog.naver.com/ohmygod210"
         ],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
@@ -465,34 +463,42 @@
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "후불상조란 무엇인가요?",
+                "name": "미리 가입하지 않았는데, 임종 직후 바로 이용이 가능한가요?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "후불상조는 선불로 가입비를 납부하지 않고, 장례 서비스 이용 후 비용을 지불하는 방식입니다. 별길상조는 투명한 가격으로 후불 장례 서비스를 제공합니다."
+                    "text": "네, 가능합니다. 별길상조는 매달 납입금을 내는 선불제 상조가 아닌 100% 후불제 상조입니다. 사전 가입 없이 임종 직후 또는 임종 임박 시 대표번호(1844-2241)로 전화만 주시면 즉시 서울·경기·인천 전 지역으로 앰뷸런스와 국가공인 장례지도사가 출동합니다."
                 }
             },
             {
                 "@type": "Question",
-                "name": "무빈소장이란 무엇인가요?",
+                "name": "서비스 가능 지역이 어떻게 되나요?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "무빈소장은 빈소를 차리지 않고 가족만 조용히 모여 진행하는 간소한 장례 방식입니다. 조문객 없이 가족 중심으로 진행되어 비용이 절감되고 간편합니다."
+                    "text": "별길상조는 수도권(서울특별시·경기도·인천광역시) 전 지역 전문 후불제 상조입니다. 수도권 내 대학병원 장례식장, 전문 장례식장, 공공 화장장 및 봉안시설 등 어디서나 신속한 출동과 밀착 의전 서비스를 제공합니다."
                 }
             },
             {
                 "@type": "Question",
-                "name": "24시간 상담이 가능한가요?",
+                "name": "패키지 상품 이용 시 사용하지 않은 품목은 정말 환불(차감)되나요?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "네, 별길상조는 24시간 연중무휴로 상담 가능합니다. 전화번호 1844-2241로 언제든지 연락주시면 친절히 상담해 드립니다."
+                    "text": "네, 100% 현금 차감 정산을 보장합니다. 조문객이 적어 접객도우미를 적게 쓰시거나 상복을 덜 대여하신 경우, 투명하게 공개된 품목별 단가 기준 그대로 발인 정산 시 최종 청구 금액에서 정확히 공제해 드립니다."
                 }
             },
             {
                 "@type": "Question",
-                "name": "서비스 지역은 어디인가요?",
+                "name": "병원이나 요양원에서 임종하셨을 때 가장 먼저 무엇을 해야 하나요?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "별길상조는 서울·경기·인천 수도권 전지역에서 24시간 긴급 출동 서비스를 제공합니다. 서울시립승화원, 서울추모공원, 성남영생원, 수원연화장, 함백산추모공원, 인천가족공원 등 수도권 주요 화장장 및 장례식장과 연계하여 신속하게 지원합니다."
+                    "text": "병원 측이나 사설 구급차를 먼저 부르지 마시고 가장 먼저 별길상조 24시간 상황실(1844-2241)로 연락해 주세요. 즉시 관내 고인이송 앰뷸런스를 배차하고, 희망하시는 수도권 장례식장 빈소 확인과 공공 화장장 골든타임 예약을 동시에 진행해 드립니다."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "장례 비용 결제는 언제, 어떻게 진행하나요?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "별길상조는 100% 후불제로 운영되므로 장례 1일차~2일차에는 비용을 지불하지 않으십니다. 모든 장례 일정을 마치고 발인 전 정산 시에 실제 사용 내역과 미사용 공제 내역을 영수증 명세서로 대조한 뒤 결제하시면 됩니다."
                 }
             }
         ]
@@ -528,7 +534,7 @@
             position: absolute;
             top: -40px;
             left: 0;
-            background: var(--primary-color, #6B4E3D);
+            background: var(--primary-color, #162447);
             color: white;
             padding: 10px 20px;
             z-index: 10000;
@@ -543,7 +549,7 @@
 
         /* 포커스 표시: 키보드 사용자를 위한 명확한 아웃라인 */
         *:focus {
-            outline: 2px solid var(--primary-color, #6B4E3D);
+            outline: 2px solid var(--primary-color, #162447);
             outline-offset: 2px;
         }
 
@@ -553,7 +559,7 @@
         }
 
         *:focus-visible {
-            outline: 2px solid var(--primary-color, #6B4E3D);
+            outline: 2px solid var(--primary-color, #162447);
             outline-offset: 2px;
         }
 
@@ -3802,7 +3808,7 @@
                             <div class="diy-calc-actions">
                                 <button type="button" class="diy-btn-sub" onclick="toggleAllDiy('nobinso', true)">전체선택</button>
                                 <button type="button" class="diy-btn-sub" onclick="toggleAllDiy('nobinso', false)">전체해제</button>
-                                <a href="#estimate" class="diy-btn-apply" onclick="applyDiyToEstimate('무빈소(조용한가족장)')">이 견적으로 상담</a>
+                                <a href="#estimate" class="diy-btn-apply" onclick="applyDiyToEstimate('무빈소(조용한가족장)', 'nobinso')">이 견적으로 상담</a>
                             </div>
                         </div>
                         <p style="margin-top: 12px; font-size: 0.84rem; color: var(--text-gray); line-height: 1.6; word-break: keep-all;">
@@ -3962,7 +3968,7 @@
                             <div class="diy-calc-actions">
                                 <button type="button" class="diy-btn-sub" onclick="toggleAllDiy('general', true)">전체선택</button>
                                 <button type="button" class="diy-btn-sub" onclick="toggleAllDiy('general', false)">전체해제</button>
-                                <a href="#estimate" class="diy-btn-apply" onclick="applyDiyToEstimate('50명내외(가족중심장례)')">이 견적으로 상담</a>
+                                <a href="#estimate" class="diy-btn-apply" onclick="applyDiyToEstimate('50명내외(가족중심장례)', 'general')">이 견적으로 상담</a>
                             </div>
                         </div>
                         <p style="margin-top: 12px; font-size: 0.84rem; color: var(--text-gray); line-height: 1.6; word-break: keep-all;">
@@ -4255,11 +4261,42 @@
             updateDiyTotal(group);
         }
 
-        function applyDiyToEstimate(guestValue) {
+        function applyDiyToEstimate(guestValue, group) {
             var guestSelect = document.getElementById('estGuestSelect');
             if (guestSelect && guestValue) {
                 guestSelect.value = guestValue;
                 guestSelect.dispatchEvent(new Event('change'));
+            }
+            if (group) {
+                var checkboxes = document.querySelectorAll('.diy-item-check[data-group="' + group + '"]');
+                var selectedItems = [];
+                var total = 0;
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) {
+                        var unitPrice = parseInt(checkboxes[i].getAttribute('data-price') || '0', 10);
+                        var qty = parseInt(checkboxes[i].getAttribute('data-qty') || '1', 10);
+                        var unit = checkboxes[i].getAttribute('data-unit') || '';
+                        if (qty > 0) {
+                            total += unitPrice * qty;
+                            var labelEl = checkboxes[i].closest('label');
+                            var itemName = labelEl ? labelEl.textContent.trim() : '';
+                            if (itemName) {
+                                selectedItems.push(checkboxes[i].hasAttribute('data-qty-id') ? itemName + ' ' + qty + unit : itemName);
+                            }
+                        }
+                    }
+                }
+                var previewBox = document.getElementById('estimatePreviewBox');
+                var previewType = document.getElementById('previewTypeName');
+                var previewPrice = document.getElementById('previewPriceRange');
+                var previewDesc = document.getElementById('previewDesc');
+                if (previewBox && previewType && previewPrice && previewDesc) {
+                    var groupName = group === 'nobinso' ? '맞춤 무빈소장례' : '맞춤 일반장례';
+                    previewBox.classList.add('active');
+                    previewType.textContent = '[셀프 견적 반영] ' + groupName + ' (' + selectedItems.length + '개 품목 선택)';
+                    previewPrice.textContent = '예상 합계 ' + total.toLocaleString('ko-KR') + '원';
+                    previewDesc.textContent = '선택 품목: ' + (selectedItems.length ? selectedItems.join(', ') : '선택된 품목 없음') + ' (아래 성함과 연락처를 남겨주시면 해당 견적 기준으로 맞춤 안내해 드립니다.)';
+                }
             }
             var estimateSection = document.getElementById('estimate');
             if (estimateSection) {
@@ -4677,7 +4714,7 @@
     <section class="stats-section">
         <div class="stats-container">
             <div class="stats-item">
-                <div class="stats-number" id="stats-consultation">714<span class="stats-plus">건+</span></div>
+                <div class="stats-number" id="stats-consultation">1,004<span class="stats-plus">건+</span></div>
                 <div class="stats-label">누적 상담 건수</div>
             </div>
             <div class="stats-divider"></div>
@@ -4694,10 +4731,11 @@
                 .then(function (res) { return res.json(); })
                 .then(function (data) {
                     document.getElementById('stats-consultation').innerHTML =
-                        data.consultationCount + '<span class="stats-plus">건+</span>';
+                        Number(data.consultationCount).toLocaleString('ko-KR') + '<span class="stats-plus">건+</span>';
                     document.getElementById('stats-satisfaction').innerHTML =
                         data.satisfactionRate + '<span class="stats-plus">%</span>';
-                });
+                })
+                .catch(function () {});
         })();
     </script>
 
@@ -4831,7 +4869,7 @@
             </div>
             <!-- 저작권 표시 -->
             <div class="footer-bottom">
-                <p>© 2025 별길상조. All rights reserved.</p>
+                <p>© 2026 별길장례(별길상조). All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -4905,7 +4943,22 @@
         const form = document.getElementById('customEstimateForm');
         const submitBtn = form.querySelector('.estimate-btn');
         const privacyCheckbox = document.getElementById('privacyAgree');
+        const phoneInput = form.querySelector('input[type="tel"]');
         const originalBtnText = submitBtn.textContent;
+
+        // 연락처 입력 시 자동 하이픈 포맷팅 (예: 010-1234-5678)
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function(e) {
+                var digits = e.target.value.replace(/[^0-9]/g, '').slice(0, 11);
+                if (digits.length <= 3) {
+                    e.target.value = digits;
+                } else if (digits.length <= 7) {
+                    e.target.value = digits.slice(0, 3) + '-' + digits.slice(3);
+                } else {
+                    e.target.value = digits.slice(0, 3) + '-' + digits.slice(3, digits.length - 4) + '-' + digits.slice(digits.length - 4);
+                }
+            });
+        }
 
         // 폼 제출 이벤트 핸들러
         form.addEventListener('submit', function(e) {
